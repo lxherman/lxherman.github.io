@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-12-27T11:27:50.191Z</updated>
+  <updated>2019-12-28T06:47:36.979Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,53 +17,68 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2019/12/27/hello-world/"/>
-    <id>http://yoursite.com/2019/12/27/hello-world/</id>
-    <published>2019-12-27T11:27:50.191Z</published>
-    <updated>2019-12-27T11:27:50.191Z</updated>
+    <title>Linux上使用crontab命令完成定时scrapy爬虫</title>
+    <link href="http://yoursite.com/2019/12/28/linux-crontab/"/>
+    <id>http://yoursite.com/2019/12/28/linux-crontab/</id>
+    <published>2019-12-28T05:22:14.000Z</published>
+    <updated>2019-12-28T06:47:36.979Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>本文主要记录：<br>&#160; &#160; &#160; &#160;1、crontab的用法<br>&#160; &#160; &#160; &#160;2、crontab与scrapy的结合</p></blockquote><h1 id="一、crontab"><a href="#一、crontab" class="headerlink" title="一、crontab"></a>一、crontab</h1><ul><li><strong>crontab是什么</strong><br>&#160; &#160; &#160; &#160;crontab是用来定期执行程序的命令。</li><li><strong>crontab常用命令</strong><table><thead><tr><th align="center">命令</th><th align="left">解释</th></tr></thead><tbody><tr><td align="center">crontab -l</td><td align="left">列出当前的定时任务列表</td></tr><tr><td align="center">crontab -e</td><td align="left">执行编辑器来设定时任务</td></tr></tbody></table></li></ul><a id="more"></a><ul><li><strong>定时任务设置格式</strong><br>&#160; &#160; &#160; &#160;格式：[分]  [时]  [日]  [月]  [周] [执行的操作]<br>例：<br><code>00 19 * * * python /root/spider/test.py</code><br>每天19:00执行python /root/spider/test.py  <strong>(注意一定要是绝对路径)</strong></li></ul><p><img src="/2019/12/28/linux-crontab/1.png" alt></p><h4 id="常用符号："><a href="#常用符号：" class="headerlink" title="常用符号："></a>常用符号：</h4><ul><li><p>星号（*）：代表所有可能的值，如month字段为星号，则表示在满足其它字段的制约条件后每月都执行该命令操作。</p></li><li><p>逗号（,）：可以用逗号隔开的值指定一个列表范围，例如，“1,2,5,7,8,9”</p></li><li><p>中杠（-）：可以用整数之间的中杠表示一个整数范围，例如“2-6”表示“2,3,4,5,6”</p></li><li><p>正斜线（/）：可以用正斜线指定时间的间隔频率，例如“0-23/2”表示每两小时执行一次。</p></li></ul><p><strong>以下是几个例子</strong>：</p><p>&#160; &#160; &#160; &#160;1、每分钟执行一次：<code>*  *  *  *  * command</code></p><p>&#160; &#160; &#160; &#160;2、每一小时执行一次 ：<code>00  *  *  *  * command</code>（精确时间点） or <code>* */1 * * * command</code> (  /   表示频率)</p><p>&#160; &#160; &#160; &#160;3、每小时的15和30分各执行一次 <code>15,45 * * * * command</code>（, 表示并列）</p><p>&#160; &#160; &#160; &#160;4、在每天上午 8- 11时中间每小时 15 ，45分各执行一次：<code>15,45 8-11 * * * command</code> （- 表示范围）</p><p>&#160; &#160; &#160; &#160;5、每个星期一的上午8点到11点的第3和第15分钟执行：<code>3,15 8-11 * * 1 command</code></p><p>&#160; &#160; &#160; &#160;6、每隔两天的上午8点到11点的第3和第15分钟执行：<code>3,15 8-11 */2 * * command</code></p><h1 id="二、crontab与scrapy的结合"><a href="#二、crontab与scrapy的结合" class="headerlink" title="二、crontab与scrapy的结合"></a>二、crontab与scrapy的结合</h1><p>&#160; &#160; &#160; &#160;通常运行scrapy需要进入到该scrapy项目的文件夹下，所以我们不能直接<code>scrapy crawl 项目</code>。</p><p>例如我需要每天19:00运行我部署的某天气网站的scrapy爬虫，名为chinaweather：</p><p>&#160; &#160; &#160; &#160;1、我们需要先 <code>cd</code> 进入到该scrapy项目的根目录下</p><p>&#160; &#160; &#160; &#160;2、scrapy命令需要使用绝对路径，如果找不到，可以在命令行输入<code>which scrapy</code>找到。如：/usr/local/anaconda/bin/scrapy</p><p>&#160; &#160; &#160; &#160;3、这个scrapy运行的时候会打印一些日志，我们用<code>&gt;&gt;</code>可以把它统一追加到一个文件中，方便检查scrapy是否正常运行。 （需要注意的是<code>&gt;</code>是覆盖重写，<code>&gt;&gt;</code>是追加操作）<br>&#160; &#160; &#160; &#160;使用crontab -e 编辑后:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">00 19 * * * cd &#x2F;root&#x2F;spider&#x2F;weather &amp;&amp; &#x2F;usr&#x2F;local&#x2F;anaconda&#x2F;bin&#x2F;scrapy crawl chinaweather &gt;&gt; &#x2F;root&#x2F;spider&#x2F;weather&#x2F;weather_history.log</span><br></pre></td></tr></table></figure><p>&#160; &#160; &#160; &#160;即可添加到定时任务，最后保存退出，就会显示任命了新的定时任务：</p><p><img src="/2019/12/28/linux-crontab/2.png" alt></p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
+      &lt;blockquote&gt;
+&lt;p&gt;本文主要记录：&lt;br&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;1、crontab的用法&lt;br&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;2、crontab与scrapy的结合&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;一、crontab&quot;&gt;&lt;a href=&quot;#一、crontab&quot; class=&quot;headerlink&quot; title=&quot;一、crontab&quot;&gt;&lt;/a&gt;一、crontab&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;crontab是什么&lt;/strong&gt;&lt;br&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160;crontab是用来定期执行程序的命令。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;crontab常用命令&lt;/strong&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;center&quot;&gt;命令&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;解释&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;crontab -l&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;列出当前的定时任务列表&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;crontab -e&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;执行编辑器来设定时任务&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
     
+      <category term="linux" scheme="http://yoursite.com/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+      <category term="crontab" scheme="http://yoursite.com/tags/crontab/"/>
     
   </entry>
   
   <entry>
-    <title>Linux上使用crontab命令完成定时爬虫</title>
-    <link href="http://yoursite.com/2019/12/27/test/"/>
-    <id>http://yoursite.com/2019/12/27/test/</id>
-    <published>2019-12-27T08:40:41.000Z</published>
-    <updated>2019-12-28T03:38:53.730Z</updated>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2019/12/27/hello-world/"/>
+    <id>http://yoursite.com/2019/12/27/hello-world/</id>
+    <published>2019-12-27T11:27:50.191Z</published>
+    <updated>2019-12-28T03:55:12.123Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>本文主要记录： 1、crontab的用法。<br>&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;  2、crontab与scrapy的结合。</p></blockquote><h1 id="一、crontab"><a href="#一、crontab" class="headerlink" title="一、crontab"></a>一、crontab</h1><ul><li><p><strong>crontab是什么</strong><br>&#160; &#160; &#160; &#160;Linux crontab是用来定期执行程序的命令。</p></li><li><p><strong>crontab常用命令</strong><br>&#160; &#160; &#160; &#160;1、crontab -l ： 列出当前的定时任务列表<br>&#160; &#160; &#160; &#160;2、crontab -e ： 执行编辑器来设定时任务</p></li><li><p><strong>定时任务设置格式</strong><br>&#160; &#160; &#160; &#160;格式：[分]  [时]  [日]  [月]  [周] [执行的操作]<br>&#160; &#160; &#160; &#160;例：<code>00 19 * * * python /root/spider/test.py</code> 每天19:00执行python /root/spider/test.py  注意一定要是绝对路径<br><img src="https://upload-images.jianshu.io/upload_images/16325133-d143a49ffa4e35c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图摘自思否"></p><h4 id="常用符号："><a href="#常用符号：" class="headerlink" title="常用符号："></a>常用符号：</h4></li></ul><ul><li><p>星号（*）：代表所有可能的值，如month字段为星号，则表示在满足其它字段的制约条件后每月都执行该命令操作。</p></li><li><p>逗号（,）：可以用逗号隔开的值指定一个列表范围，例如，“1,2,5,7,8,9”</p></li><li><p>中杠（-）：可以用整数之间的中杠表示一个整数范围，例如“2-6”表示“2,3,4,5,6”</p></li><li><p>正斜线（/）：可以用正斜线指定时间的间隔频率，例如“0-23/2”表示每两小时执行一次。</p></li></ul><p><strong>以下是几个例子</strong>：</p><p>&#160; &#160; &#160; &#160;1、每分钟执行一次：    <code>*  *  *  *  * command</code></p><p>&#160; &#160; &#160; &#160;2、每一小时执行一次        ：<code>00  *  *  *  * command</code>（精确时间点） or <code>* */1 * * * command</code> (  /   表示频率)</p><p>&#160; &#160; &#160; &#160;3、每小时的15和30分各执行一次 <code>15,45 * * * * command</code>（, 表示并列）</p><p>&#160; &#160; &#160; &#160;4、在每天上午 8- 11时中间每小时 15 ，45分各执行一次：<code>15,45 8-11 * * * command</code> （- 表示范围）</p><p>&#160; &#160; &#160; &#160;5、每个星期一的上午8点到11点的第3和第15分钟执行：<code>3,15 8-11 * * 1 command</code></p><p>&#160; &#160; &#160; &#160;6、每隔两天的上午8点到11点的第3和第15分钟执行：<code>3,15 8-11 */2 * * command</code></p><h1 id="二、crontab与scrapy的结合"><a href="#二、crontab与scrapy的结合" class="headerlink" title="二、crontab与scrapy的结合"></a>二、crontab与scrapy的结合</h1><p>&#160; &#160; &#160; &#160;通常运行scrapy需要进入到该scrapy项目的文件夹下，所以我们不能直接scrapy crawl ……。</p><p>例如我需要每天19:00运行我部署的某天气网站的scrapy爬虫，名为chinaweather：</p><p>&#160; &#160; &#160; &#160;1、我们需要先 <code>cd</code> 进入到该scrapy项目的路径下</p><p>&#160; &#160; &#160; &#160;2、对于scrapy需要使用绝对路径，如果找不到，可以使用<code>which scrapy</code>找到如：/usr/local/anaconda/bin/scrapy。</p><p>&#160; &#160; &#160; &#160;3、这个scrapy运行的时候会打印一些日志，我们用<code>&gt;&gt;</code>可以把它统一追加到一个文件中，方便检查scrapy是否正常运行。 （需要注意的是<code>&gt;</code>是覆盖重写，<code>&gt;&gt;</code>是追加操作）</p><p>&#160; &#160; &#160; &#160;使用crontab -e 编辑后，即可添加到定时任务中：<br><code>00 19 * * * cd /root/spider/weather &amp;&amp; /usr/local/anaconda/bin/scrapy crawl chinaweather &gt;&gt; /root/spider/weather/weather_history.log</code></p><p>&#160; &#160; &#160; &#160;最后保存退出，就会显示任命了新的定时任务：<br><img src="https://upload-images.jianshu.io/upload_images/16325133-71ace52ba4f0597f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><a id="more"></a><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;本文主要记录： 1、crontab的用法。&lt;br&gt;&amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160; &amp;#160;  2、cront
-      
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
     
     </summary>
     
     
-      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-      <category term="crontab" scheme="http://yoursite.com/tags/crontab/"/>
     
   </entry>
   
