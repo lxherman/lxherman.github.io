@@ -5,7 +5,7 @@
 # Site
 title: 興華的mark
 subtitle: '烂记性不如好笔头'
-description: '记录生活学习点滴'
+# description: '记录生活学习点滴'
 keywords: "python,爬虫"
 author: Otavio.lxh
 language: zh-CN
@@ -41,7 +41,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
