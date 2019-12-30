@@ -597,4 +597,3 @@ show1_thread.start()
 show2_thread.start()
 
 ```
-·
