@@ -47,7 +47,7 @@ Process([group [, target [, name [, args [, kwargs]]]]])
 
 **Process类中创建多进程有两种方法**：
 （1）用法与threading类似
-```
+```Python
 from multiprocessing import Process  #导入Process模块 
 import os  
 def test(name):
@@ -67,7 +67,7 @@ if __name__ == "__main__":
 	proc.join()
 ```
 （2）继承Process类，修run函数代码
-```
+```Python
 from multiprocessing import Process
 import time
 class MyProcess(Process):
@@ -100,7 +100,7 @@ if __name__ == '__main__':
 - name：进程名字。
 - pid：进程号。
 例如使用daemon属性：
-```
+```Python
 from multiprocessing import Process
 import time
  
@@ -152,7 +152,7 @@ Pool([processes[, initializer[, initargs[, maxtasksperchild[, context]]]]])
 
 **Pool使用方法**：
 （1）Pool+map函数
-```
+```Python
 from multiprocessing import Pool
 def test(i):
     print(i)
@@ -167,7 +167,7 @@ if __name__=="__main__":
 `此写法缺点在于只能通过map向函数传递一个参数。`
   
 （2）异步进程池（非阻塞）
-```
+```Python
 from multiprocessing import Pool
 
 def test(i):
@@ -195,7 +195,7 @@ For循环中执行步骤：
 注意：**调用join之前，先调用close或者terminate方法，否则会出错。**执行完close后不会有新的进程加入到pool,join函数等待所有子进程结束。
 
 （3）同步进程池（阻塞）
-```
+```Python
 from multiprocessing import Pool
 import time
 
@@ -225,7 +225,7 @@ if __name__=="__main__":
 
 ###4. Lock模块
 &#160; &#160; &#160; &#160;当多进程需要访问共享资源的时候，类似多线程，它同样有一个Lock类，可以避免访问的冲突。
-```
+```Python
 from multiprocessing import Process, Lock  
 
 def l(lock, num):  
@@ -252,3 +252,15 @@ if __name__ == '__main__':
 &#160; &#160; &#160; &#160;其是在进程同步过程中一个比较重要的角色。可以控制临界资源的数量，保证各个进程之间的互斥和同步。
 
 &#160; &#160; &#160; &#160;对于上述内容的详细解释，可以参考：https://cuiqingcai.com/3335.html
+
+
+
+
+
+
+
+{% note warning %}
+本文作者： otavio.LXH
+本文链接：https://lxherman.github.io/2019/12/30/python-multiprocess2
+转载请注明出处！
+{% endnote %}

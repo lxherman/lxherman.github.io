@@ -121,13 +121,14 @@ scheme: Pisces
 # External url should start with http:// or https://
 menu:
   home: / || home
-  #about: /about/ || user
+  # about: /about/ || user
   tags: /tags/ || tags
   categories: /categories/ || th
   archives: /archives/ || archive
-  #schedule: /schedule/ || calendar
-  #sitemap: /sitemap.xml || sitemap
-  # commonweal: /404/ || heartbeat
+  # schedule: /schedule/ || calendar
+  # sitemap: /sitemap.xml || sitemap
+  commonweal: /404/ || heartbeat
+  
 
 # Enable / Disable menu icons / item badges.
 menu_settings:
@@ -181,8 +182,8 @@ site_state: true
 # Key is the link label showing to end users.
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
-  #GitHub: https://github.com/yourname || github
-  #E-Mail: mailto:yourname@gmail.com || envelope
+  GitHub: https://github.com/lxherman || github
+  E-Mail: mailto:otaviolxh@outlook.com || envelope
   #Weibo: https://weibo.com/yourname || weibo
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
@@ -191,11 +192,11 @@ social:
   #YouTube: https://youtube.com/yourname || youtube
   #Instagram: https://instagram.com/yourname || instagram
   #Skype: skype:yourname?call|chat || skype
-  #RSS: /atom.xml || rss
+  RSS: /atom.xml || rss
 
 social_icons:
   enable: true
-  icons_only: false
+  icons_only: true
   transition: false
 
 # Blog rolls
@@ -409,7 +410,7 @@ github_banner:
 # ---------------------------------------------------------------
 
 font:
-  enable: false
+  enable: true
 
   # Uri of fonts host, e.g. //fonts.googleapis.com (Default).
   host:
@@ -421,31 +422,31 @@ font:
 
   # Global font settings used for all elements inside <body>.
   global:
-    external: true
+    external: false
     family: Lato
     size:
 
   # Font settings for site title (.site-title).
   title:
     external: true
-    family:
-    size:
+    family: Shadows Into Light
+    size: 2
 
   # Font settings for headlines (<h1> to <h6>).
   headings:
     external: true
-    family:
-    size:
+    family: Noto Sans SC
+    size: 1.8
 
   # Font settings for posts (.post-body).
   posts:
     external: true
-    family:
+    family: Noto Sans SC
 
   # Font settings for <code> and code blocks.
   codes:
     external: true
-    family:
+    family: Consolas 
 
 
 # ---------------------------------------------------------------

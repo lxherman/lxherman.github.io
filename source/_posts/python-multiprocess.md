@@ -62,7 +62,7 @@ ___
 |setDaemon()|设置为守护线程|
 ### 1. 线程的普通创建方式
 &#160; &#160; &#160; &#160;主线程不会等待子线程执行完再结束。(计算花费时间时，主线程已经结束)
-```
+```Python
 import threading
 import time
  
@@ -116,7 +116,7 @@ if __name__ == '__main__':
   
 ### 2. 自定义线程类
 &#160; &#160; &#160; &#160;为了让线程代码更好的封装。可以使用threading模块下的Thread类，继承自threading.Thread这个类，然后实现run方法，线程就会自动运行run方法中的代码。
-```
+```Python
 import threading
 import time
  
@@ -146,7 +146,7 @@ if __name__ == '__main__':
   
 ### 3. 计算子线程执行的时间
 &#160; &#160; &#160; &#160;主线程不会等待子线程执行完毕再结束自身。可以使用Thread类的**join()**方法来使得子线程执行完毕以后，主线程再关闭。
-```
+```Python
 import threading
 import time
 
@@ -193,7 +193,7 @@ if __name__ == "__main__":
 
 ### 4. 守护线程 
 &#160; &#160; &#160; &#160;线程的**setDaemon(True)**将线程变成主线程的守护线程，意思是当主进程结束后，子线程也会随之退出。意味着当主线程结束后，程序就结束了。
-```
+```Python
 import threading
 import time
 
@@ -245,7 +245,7 @@ if __name__ == "__main__":
 
 ### 6. 线程锁（Lock,RLock）
 &#160; &#160; &#160; &#160;多线程都是在同一个进程中运行的。因此在进程中的全局变量所有线程都是可共享的。这就造成了一个问题，因为线程执行的顺序是无序的。当多个线程同时修改同一条数据时可能会出现脏数据。例如：
-```
+```Python
 import threading
  
 tickets = 0
@@ -269,7 +269,7 @@ if __name__ == '__main__':
 `tickets:1227635`
 - #### 互斥锁（Lock） 
 &#160; &#160; &#160; &#160;为了解决以上使用共享全局变量的问题。threading提供了一个Lock类(互斥锁)，这个类可以在某个线程访问某个变量的时候加锁，其他线程此时就不能进来，直到当前线程处理完后，把锁释放了，其他线程才能进来处理。示例代码如下：
-```
+```Python
 import threading
  
 tickets = 0
@@ -308,7 +308,7 @@ if __name__ == '__main__':
   
 ### 7. 信号量（Semaphore） 
 &#160; &#160; &#160; &#160;互斥锁同时只允许一个线程更改数据，而Semaphore是同时允许一定数量的线程更改数据 ，比如银行有3个窗口，那最多只允许3个人办理业务，后面的人只能等着，有人办理完了才能过去办理。示例代码如下:
-```
+```Python
 import threading
  
 tickets = 0
@@ -364,7 +364,7 @@ if __name__ == '__main__':
 |is_set()|判断是否设置了flag|
 |wait()|一直监听flag，没有检测到会一直处于阻塞状态|
 &#160; &#160; &#160; &#160;事件处理的机制：全局定义了一个“Flag”，如果“Flag”值为 False，那么当程序执行 event.wait 方法时就会阻塞，如果“Flag”值为True，那么event.wait 方法时便不再阻塞。示例代码：
-```
+```Python
 import threading,time
 
 event = threading.Event()  # 创建事件对象
@@ -417,7 +417,7 @@ car.start()
 ### 10. 生产者和消费者模式
 &#160; &#160; &#160; &#160;生产者和消费者模式是多线程开发中经常见到的一种模式。生产者的线程专门用来生产一些数据，然后存放到一个中间的变量中。消费者再从这个中间的变量中取出数据进行消费。但是因为要使用中间变量，中间变量经常是一些全局变量，因此需要使用锁来保证数据完整性。
 - 以下是一个使用Lock锁的实现：
-```
+```Python
 #lock版本
 import threading
 import random
@@ -481,7 +481,7 @@ if __name__ == "__main__":
    - notify_all：通知所有正在等待的线程。notify和notify_all不会释放锁。并且需要在release之前调用。
 
 - 以下是使用condition的实现：
-```
+```Python
 #condition版本
 import threading
 import random
@@ -561,7 +561,7 @@ queue模块中的常用方法:
 ____
 #####一个多线程的面试题：
 &#160; &#160; &#160; &#160;创建两个线程，其中一个输出1-52，另外一个输出A-Z。输出格式要求：12A 34B 56C 78D。
-```
+```Python
 import threading
 import time
 
@@ -597,3 +597,11 @@ show1_thread.start()
 show2_thread.start()
 
 ```
+
+
+
+{% note warning %}
+本文作者： otavio.LXH
+本文链接：https://lxherman.github.io/2019/12/30/python-multiprocess
+转载请注明出处！
+{% endnote %}

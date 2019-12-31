@@ -16,7 +16,7 @@ categories:
 &#160; &#160; &#160; &#160;摘要算法又称哈希算法、散列算法。它通过一个函数，把任意长度的数据转换为一个长度固定的数据串（通常用16进制的字符串表示）。
 
 ### 二、如何产生hash值
-```
+```Python
 import hashlib
 md5 = hashlib.md5()
 md5.update('this is md5'.encode('utf-8'))
@@ -36,7 +36,7 @@ print(md5.)
 
 ### 三、hmac模块
 &#160; &#160; &#160; &#160;使用hmac模块时，若要使用update()，初始值必须一致，否则结果会不同。
-```
+```Python
 import hmac
 h1=hmac.new(b'tom')          #初始值必须保证一致，最终得到的结果就会不一样
 h1.update(b'hello')
@@ -54,6 +54,8 @@ print(h3.hexdigest())
 
 ![](/python-hashlib/1.png)
 
-> 本文作者： otavio.LXH
-> 本文链接：https://lxherman.github.io/2019/12/29/python-hashlib
-> 转载请注明出处！
+{% note warning %}
+本文作者： otavio.LXH
+本文链接：https://lxherman.github.io/2019/12/29/python-hashlib
+转载请注明出处！
+{% endnote %}
