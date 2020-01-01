@@ -62,7 +62,7 @@ footer:
     color: "#808080"
 
   # If not defined, `author` from Hexo `_config.yml` will be used.
-  copyright:
+  copyright: by Otavio.LXH
 
   powered:
     # Hexo link (Powered by Hexo).
@@ -125,9 +125,10 @@ menu:
   tags: /tags/ || tags
   categories: /categories/ || th
   archives: /archives/ || archive
+  photos: /photos/ || images
   # schedule: /schedule/ || calendar
   # sitemap: /sitemap.xml || sitemap
-  commonweal: /404/ || heartbeat
+  # commonweal: /404/ || heartbeat
   
 
 # Enable / Disable menu icons / item badges.
@@ -193,6 +194,12 @@ social:
   #Instagram: https://instagram.com/yourname || instagram
   #Skype: skype:yourname?call|chat || skype
   RSS: /atom.xml || rss
+
+ # 粒子时钟
+diy_time:
+  runtime: true 
+  clock: true # 粒子时钟
+
 
 social_icons:
   enable: true
@@ -852,12 +859,13 @@ motion:
 # Progress bar in the top during page loading.
 # Dependencies: https://github.com/theme-next/theme-next-pace
 # For more information: https://github.com/HubSpot/pace
+# 加载效果
 pace:
-  enable: false
+  enable: true
   # Themes list:
   # big-counter | bounce | barber-shop | center-atom | center-circle | center-radar | center-simple
   # corner-indicator | fill-left | flat-top | flash | loading-bar | mac-osx | material | minimal
-  theme: minimal
+  theme: corner-indicator 
 
 # JavaScript 3D library.
 # Dependencies: https://github.com/theme-next/theme-next-three
@@ -1015,6 +1023,10 @@ vendors:
   three_waves:
   canvas_lines:
   canvas_sphere:
+
+ 
+
+
 
   # Internal version: 1.0.0
   # canvas_nest: //cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js

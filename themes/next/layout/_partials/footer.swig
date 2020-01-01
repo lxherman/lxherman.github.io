@@ -42,28 +42,6 @@
   {%- endif %}
 </div>
 
-{%- if theme.footer.powered.enable %}
-  <div class="powered-by">
-    {{- __('footer.powered', next_url('https://hexo.io', 'Hexo', {class: 'theme-link'})) }}
-    {%- if theme.footer.powered.version %} v{{ hexo_version }}{%- endif %}
-  </div>
-{%- endif %}
-
-{%- if theme.footer.powered.enable and theme.footer.theme.enable %}
-  <span class="post-meta-divider">|</span>
-{%- endif %}
-
-{%- if theme.footer.theme.enable %}
-  <div class="theme-info">
-    {%- set next_site = 'https://theme-next.org' %}
-    {%- if theme.scheme !== 'Gemini' %}
-      {%- set next_site = 'https://' + theme.scheme | lower + '.theme-next.org' %}
-    {%- endif %}
-    {{- __('footer.theme') }} – {{ next_url(next_site, 'NexT.' + theme.scheme, {class: 'theme-link'}) }}
-    {%- if theme.footer.theme.version %} v{{ next_version }}{%- endif %}
-  </div>
-{%- endif %}
-
 {%- if theme.add_this_id %}
   <div class="addthis_inline_share_toolbox">
     <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid={{ theme.add_this_id }}" async="async"></script>
@@ -71,3 +49,28 @@
 {%- endif %}
 
 {{- next_inject('footer') }}
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共{{ totalcount(site) }}字</span>
+</div>
+{%- if theme.footer.powered.enable and theme.footer.theme.enable %}
+  <span class="post-meta-divider">|</span>
+{%- endif %}
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("12/27/2019 12:00:00");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = " Runing "+dnum+" D "; 
+        document.getElementById("times").innerHTML = hnum + " H " + mnum + " M " + snum + " S"; 
+    } 
+setInterval("createtime()",250);
+</script>
+

@@ -12,3 +12,7 @@ npm install hexo-generator-searchdb --save
 npm install --save hexo-generator-index
 npm install --save hexo-generator-archive
 npm install --save hexo-generator-tag
+
+
+#字数统计
+npm install hexo-wordcount --save

@@ -43,6 +43,8 @@
           <span>0%</span>
         </div>
       {%- endif %}
+      
+      {% include '../clock.swig' %}
 
     </div>
   </aside>
