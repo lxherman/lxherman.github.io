@@ -125,7 +125,7 @@ menu:
   tags: /tags/ || tags
   categories: /categories/ || th
   archives: /archives/ || archive
-  photos: /photos/ || images
+  photos: /photos/ || image
   # schedule: /schedule/ || calendar
   # sitemap: /sitemap.xml || sitemap
   # commonweal: /404/ || heartbeat
@@ -199,6 +199,10 @@ social:
 diy_time:
   runtime: true 
   clock: true # 粒子时钟
+
+daovoice: true
+daovoice_app_id: 8697e7c4
+
 
 
 social_icons:
@@ -866,6 +870,7 @@ pace:
   # big-counter | bounce | barber-shop | center-atom | center-circle | center-radar | center-simple
   # corner-indicator | fill-left | flat-top | flash | loading-bar | mac-osx | material | minimal
   theme: corner-indicator 
+  pace_theme: orner-indicator
 
 # JavaScript 3D library.
 # Dependencies: https://github.com/theme-next/theme-next-three
