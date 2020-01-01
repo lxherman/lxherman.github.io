@@ -88,4 +88,3 @@
     motion: {{ theme.motion | json }}
   };
 </script>
-
