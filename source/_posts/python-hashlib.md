@@ -54,8 +54,3 @@ print(h3.hexdigest())
 
 ![](/python-hashlib/1.png)
 
-{% note warning %}
-本文作者： otavio.LXH
-本文链接：https://lxherman.github.io/2019/12/29/python-hashlib
-转载请注明出处！
-{% endnote %}

@@ -16,3 +16,6 @@ npm install --save hexo-generator-tag
 
 #字数统计
 npm install hexo-wordcount --save
+
+#萌萌哒
+npm install --save hexo-helper-live2d

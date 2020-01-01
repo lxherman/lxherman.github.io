@@ -257,11 +257,3 @@ if __name__ == '__main__':
 
 
 
-
-
-
-{% note warning %}
-本文作者： otavio.LXH
-本文链接：https://lxherman.github.io/2019/12/30/python-multiprocess2
-转载请注明出处！
-{% endnote %}

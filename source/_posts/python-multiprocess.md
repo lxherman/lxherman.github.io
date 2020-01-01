@@ -600,9 +600,3 @@ show2_thread.start()
 ```
 
 
-
-{% note warning %}
-本文作者： otavio.LXH
-本文链接：https://lxherman.github.io/2019/12/30/python-multiprocess
-转载请注明出处！
-{% endnote %}

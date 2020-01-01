@@ -104,11 +104,3 @@ def multi_thread():
 
 *错误之处希望大神指出。*
 
-
-
-
-{% note warning %}
-本文作者： otavio.LXH
-本文链接：https://lxherman.github.io/2019/12/31/python-multiprocess3
-转载请注明出处！
-{% endnote %}

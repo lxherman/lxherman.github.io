@@ -50,10 +50,3 @@ categories:
 &#160; &#160; &#160; &#160;在证书名称中输入charles后确定即可。
 
 ***现在就可以在Charles中抓到模拟器中的https包啦。***
-
-
-{% note warning %}
-本文作者： otavio.LXH
-本文链接：https://lxherman.github.io/2019/12/30/tools-charles
-转载请注明出处！
-{% endnote %}
