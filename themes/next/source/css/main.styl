@@ -58,3 +58,26 @@ for $inject_style in hexo-config('injects.style')
 .with-love {
     color: rgb(255, 0, 0);
 }
+
+//=== 标题栏
+// .site-meta {
+//   background: $blue; 
+// }
+
+//=== 背景
+body {
+    background:url(/images/background.jpg);
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-position:50% 50%;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -ms-background-size: cover;
+    opacity: 0.95;
+    /*这是设置底部文字, 看个人需要修改*/
+     #footer > div > div {
+        color:#eee;
+    }
+}
