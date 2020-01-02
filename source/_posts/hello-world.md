@@ -1,7 +1,8 @@
 ---
 title: Hello World
 date: 2019-12-27 08:08:08
-photos: 
+
+# photos: 
 # - "https://github.com/maoqitian/MaoMdPhoto/raw/master/Jenkins/Jenkins.jpg"
 ---
 <img src="https://github.com/maoqitian/MaoMdPhoto/raw/master/Jenkins/Jenkins.jpg" width=50% />

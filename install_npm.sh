@@ -26,3 +26,6 @@ npm install hexo-tag-cloud@^2.0.* --save
 #字数统计、阅读时长
 npm install hexo-symbols-count-time --save
 
+#文章置顶
+npm uninstall hexo-generator-index --save
+npm install hexo-generator-index-pin-top --save
