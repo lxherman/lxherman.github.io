@@ -27,7 +27,7 @@
     {%- if theme.symbols_count_time.item_text_total %}
       <span class="post-meta-item-text">{{ __('symbols_count_time.count_total') + __('symbol.colon') }}</span>
     {%- endif %}
-    <span title="{{ __('symbols_count_time.count_total') }}">{{ symbolsCountTotal(site) }}</span>
+    <span title="{{ __('symbols_count_time.count_total') }}">{{ totalcount(site) }}</span>
   {%- endif %}
 
   {%- if config.symbols_count_time.total_time %}
@@ -49,10 +49,13 @@
 {%- endif %}
 
 {{- next_inject('footer') }}
+{#统计博客字数   正确版
 <div class="theme-info">
   <div class="powered-by"></div>
   <span class="post-count">博客全站共{{ totalcount(site) }}字</span>
 </div>
+#}
+
 {%- if theme.footer.powered.enable and theme.footer.theme.enable %}
   <span class="post-meta-divider">|</span>
 {%- endif %}
@@ -68,8 +71,8 @@
         mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
         seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
         snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
-        document.getElementById("timeDate").innerHTML = " Runing "+dnum+" D "; 
-        document.getElementById("times").innerHTML = hnum + " H " + mnum + " M " + snum + " S"; 
+        document.getElementById("timeDate").innerHTML = " 网站已安全运行: "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 时 " + mnum + " 分 " + snum + " 秒"; 
     } 
 setInterval("createtime()",250);
 </script>

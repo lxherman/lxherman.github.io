@@ -5,7 +5,7 @@ npm un hexo-renderer-marked --save
 npm i hexo-renderer-kramed --save
 npm install hexo-generator-searchdb --save
 
-
+npm audit fix
 
 
 

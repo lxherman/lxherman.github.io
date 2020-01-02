@@ -107,11 +107,24 @@ search:
   field: post
   format: html
   limit: 10000
-
-# hexo-tag-cloud
+# =============================================
+# 标签云
 tag_cloud:
   textFont: Trebuchet MS, Helvetica
   textColor: '#000080'
   textHeight: 20
   outlineColor: '#00FFFF'
   maxSpeed: 10
+
+# 阅读时间&本文字数
+# symbols_count_time:
+#  #文章内是否显示
+#   symbols: true
+#   time: true
+#  # 网页底部是否显示
+#   total_symbols: true
+#   total_time: true
+
+
+
+# =============================================

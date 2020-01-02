@@ -140,7 +140,7 @@
               {%- if theme.symbols_count_time.item_text_post %}
                 <span class="post-meta-item-text">{{ __('symbols_count_time.count') + __('symbol.colon') }}</span>
               {%- endif %}
-              <span>{{ symbolsCount(post) }}</span>
+              <span>{{ wordcount(post.content) }}</span>
             </span>
           {%- endif %}
 
@@ -152,7 +152,7 @@
               {%- if theme.symbols_count_time.item_text_post %}
                 <span class="post-meta-item-text">{{ __('symbols_count_time.time') }} &asymp;</span>
               {%- endif %}
-              <span>{{ symbolsTime(post, theme.symbols_count_time.awl, theme.symbols_count_time.wpm, __('symbols_count_time.time_minutes')) }}</span>
+              <span>{{ min2read(post.content) }} 分钟</span>
             </span>
           {%- endif %}
 
@@ -246,10 +246,11 @@
 
       <footer class="post-footer">
         
-
+{#
     <span title="{{ __('post.wordcount') }}">
       本文字数 ：{{ wordcount(post.content) }} 
     </span>
+#}
         {{ partial('_partials/post/post-footer.swig', {}, {cache: theme.cache.enable}) }}
 
         {{ post_nav(post) }}
