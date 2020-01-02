@@ -19,3 +19,10 @@ npm install hexo-wordcount --save
 
 #萌萌哒
 npm install --save hexo-helper-live2d
+
+#标签云
+npm install hexo-tag-cloud@^2.0.* --save
+
+#字数统计、阅读时长
+npm install hexo-symbols-count-time --save
+
