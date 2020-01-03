@@ -11,6 +11,9 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 
 <!--more-->
 ## 个人test
+<center>居中</center>
+<p align="right">右对齐</p>
+
 {% centerquote %}引用块{% endcenterquote %}
 {% blockquote DevDocs https://twitter.com %}
 NEW: DevDocs now comes with syntax highlighting. 
