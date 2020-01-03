@@ -25,27 +25,27 @@ categories:
 ###2. PC端配置
 - 证书配置
 
-![](/tools-charles/1.png)
+![](https://s2.ax1x.com/2020/01/03/lUePOS.png)
 
-![](/tools-charles/2.png)
+![](https://s2.ax1x.com/2020/01/03/lUe9Qf.png)
 点击安装证书。
-![](/tools-charles/3.png)
-![](/tools-charles/4.jpg)
+![](https://s2.ax1x.com/2020/01/03/lUeFeg.png)
+![](https://s2.ax1x.com/2020/01/03/lUeCy8.jpg)
 
-![](/tools-charles/5.png)
+![](https://s2.ax1x.com/2020/01/03/lUepSP.png)
 &#160; &#160; &#160; &#160;默认端口是8888，也可以自行设置。
   
 &#160; &#160; &#160; &#160;到这，PC端证书配置就完成了。
 ###3. 移动端配置
-![](/tools-charles/6.png)
+![](https://s2.ax1x.com/2020/01/03/lUekwQ.png)
 
-![](/tools-charles/7.jpg)
+![](https://s2.ax1x.com/2020/01/03/lUeAoj.jpg)
 
 &#160; &#160; &#160; &#160;代理服务器主机名设置成PC的IP地址，可用cmd ipconfig查看。
 &#160; &#160; &#160; &#160;然后在浏览器中打开：chls.pro/ssl 
 &#160; &#160; &#160; &#160;模拟器中会下载一个包含CA证书的数据文件，完成后打开，显示如下。
 
-![](/tools-charles/8.png)
+![](https://s2.ax1x.com/2020/01/03/lUeZYn.png)
 
 &#160; &#160; &#160; &#160;在证书名称中输入charles后确定即可。
 
