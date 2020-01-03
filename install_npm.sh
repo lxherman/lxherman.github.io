@@ -29,3 +29,6 @@ npm install hexo-symbols-count-time --save
 #文章置顶
 npm uninstall hexo-generator-index --save
 npm install hexo-generator-index-pin-top --save
+
+#文章加密
+npm install --save hexo-blog-encrypt

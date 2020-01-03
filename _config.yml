@@ -125,6 +125,9 @@ tag_cloud:
 #   total_symbols: true
 #   total_time: true
 
+#文章加密
+encrypt:
+  enable: true
 
 
 # =============================================
