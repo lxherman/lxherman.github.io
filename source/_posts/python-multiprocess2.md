@@ -11,7 +11,7 @@ categories:
 
 >&#160; &#160; &#160; &#160;在《多线程&多进程(上)》中，记录了python中的threading模块常用的类的使用方法，对比了Lock/RLock和condition版本的生产者与消费者的问题，但是python中并不支持真正的支持多线程，不能充分的利用多核cpu的资源，大部分情况下使用的是多进程。在下半部分中，将记录多进程的使用。
 <!--more-->
-#多进程
+# 多进程
 &#160; &#160; &#160; &#160;[**官方文档**](https://docs.python.org/3.5/library/multiprocessing.html)
  &#160; &#160; &#160; &#160; [multiprocessing模块常用的类和方法(脑图)](http://naotu.baidu.com/file/6f0756e06d4f7ce38c35bf41bb25c9a8?token=f4fdf3a74e15b490)
 本节将介绍：
@@ -22,7 +22,7 @@ categories:
 - Pipe（用于管道通信）
 - Semaphore
 
-###1. Process模块
+## Process模块
 - **基本使用**
 &#160; &#160; &#160; &#160;在multiprocessing中，每一个进程都用一个Process类来表示。其用法和Thread对象的用法很相似，也有start(),run(),join()等方法。Process类适合简单的进程创建，如需资源共享可以结合multiprocessing.Queue使用；如果想要控制进程数量，则建议使用进程池Pool类。
 首先看下它的API
@@ -129,7 +129,7 @@ if __name__ == '__main__':
 `Main process Ended!`
 &#160; &#160; &#160; &#160;因为主进程只输出一句话就结束了，并且我们设置了p.daemon=True，所以此时并不会等待子进程结束，类似多线程里说介绍的，我们同样可以使用join()方法，就可等待子进程完成再结束主进程了（将上面代码中p.join() 取消注释即可）。
 
-###2.Pool模块
+## Pool模块
 &#160; &#160; &#160; &#160;Pool模块是用来创建管理进程池的，当子进程非常多且需要控制子进程数量时可以使用此模块。　Multiprocessing.Pool可以提供指定数量的进程供用户调用，当有新的请求提交到pool中时，如果池还没有满，那么就会创建一个新的进程用来执行该请求；但如果池中的进程数已经达到规定最大值，那么该请求就会等待，直到池中有进程结束，才会创建新的进程来执行它。在共享资源时，只能使用Multiprocessing.Manager类，而不能使用Queue或者Array。
 &#160; &#160; &#160; &#160;我们看看它的API：
 ```
@@ -220,10 +220,10 @@ if __name__=="__main__":
 - for循环执行完毕，再执行print函数。
 （并未实现多进程并行)
 
-###3. queue线程安全队列
+## queue线程安全队列
 &#160; &#160; &#160; &#160;该用法和线程中的用法一样。
 
-###4. Lock模块
+## Lock模块
 &#160; &#160; &#160; &#160;当多进程需要访问共享资源的时候，类似多线程，它同样有一个Lock类，可以避免访问的冲突。
 ```Python
 from multiprocessing import Process, Lock  
@@ -245,10 +245,10 @@ if __name__ == '__main__':
 其使用场景可以参考这篇文章：[Python的多进程锁的使用](https://blog.csdn.net/u011734144/article/details/78743240)
 
 &#160; &#160; &#160; &#160;多进程中一般是不推荐使用资源共享，如果要使用，可以参考：[多进程共享资源](https://thief.one/2016/11/24/Multiprocessing%E5%85%B1%E4%BA%AB%E8%B5%84%E6%BA%90/)
-###5. Pipe 管道
+## Pipe 管道
 &#160; &#160; &#160; &#160;顾名思义，一端发一端收。Pipe可以是单向(half-duplex)，也可以是双向(duplex)。我们通过mutiprocessing.Pipe(duplex=False)创建单向管道 (默认为双向)。一个进程从PIPE一端输入对象，然后被PIPE另一端的进程接收，单向管道只允许管道一端的进程输入，而双向管道则允许从两端输入。
 
-###6. Semaphore，信号量
+## Semaphore，信号量
 &#160; &#160; &#160; &#160;其是在进程同步过程中一个比较重要的角色。可以控制临界资源的数量，保证各个进程之间的互斥和同步。
 
 &#160; &#160; &#160; &#160;对于上述内容的详细解释，可以参考：https://cuiqingcai.com/3335.html

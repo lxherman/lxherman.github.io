@@ -20,9 +20,9 @@ categories:
 &#160; &#160; &#160; &#160;3. 移动端配置，在IOS或Android上指定Charles为它的代理服务器，并装上这个官网提供的根证书。
 
 &#160; &#160; &#160; &#160;*本人使用的是Windows+MuMu模拟器。*
-###1. 下载Charles
+### 下载Charles
 &#160; &#160; &#160; &#160;官网上可以发现[Charles](https://www.charlesproxy.com/)支持Windows、Mac、Linux三个平台，我们只需选择对应的下载即可，这里不再赘述。
-###2. PC端配置
+### PC端配置
 - 证书配置
 
 ![](https://s2.ax1x.com/2020/01/03/lUePOS.png)
@@ -36,7 +36,7 @@ categories:
 &#160; &#160; &#160; &#160;默认端口是8888，也可以自行设置。
   
 &#160; &#160; &#160; &#160;到这，PC端证书配置就完成了。
-###3. 移动端配置
+### 移动端配置
 ![](https://s2.ax1x.com/2020/01/03/lUekwQ.png)
 
 ![](https://s2.ax1x.com/2020/01/03/lUeAoj.jpg)
