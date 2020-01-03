@@ -202,7 +202,7 @@ diy_time:
   clock: true # 粒子时钟
 
 # 实时留言
-daovoice: true
+daovoice: false
 daovoice_app_id: 8697e7c4
 
 passage_end_tag:
@@ -464,7 +464,7 @@ github_banner:
 # ---------------------------------------------------------------
 
 font:
-  enable: true
+  enable: false
 
   # Uri of fonts host, e.g. //fonts.googleapis.com (Default).
   host:
