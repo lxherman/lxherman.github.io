@@ -13,18 +13,18 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 ## 个人test
 <center>居中</center>
 
-<blockquote class="blockquote-center">优秀的人，不是不合群，而是他们合群的人里面没有你</blockquote>
-
 <p align="right">右对齐</p>
 
 {% centerquote %}引用块{% endcenterquote %}
+
 {% blockquote DevDocs https://twitter.com %}
-NEW: DevDocs now comes with syntax highlighting. 
+引用网址. 
 {% endblockquote %}
-{% blockquote Seth Godin http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html Welcome to Island Marketing %}
+---
+{% blockquote Seth Godin http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html 引用网址 %}
 Every interaction is both precious and an opportunity to delight.
 {% endblockquote %}
-{% centerquote %}提示{% endcenterquote %}
+
 {% note default %}Content  阿斯蒂芬  {% endnote %}
 {% note primary %}Content  阿斯蒂芬  {% endnote %}
 {% note success %}Content  阿斯蒂芬  {% endnote %}
@@ -32,7 +32,7 @@ Every interaction is both precious and an opportunity to delight.
 {% note warning %}Content  阿斯蒂芬  {% endnote %}
 {% note danger %}Content  阿斯蒂芬  {% endnote %}
 {% raw %}
-content
+{% note danger %}原始代码{% endnote %}
 {% endraw %}
 
 
