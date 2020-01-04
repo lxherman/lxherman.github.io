@@ -1,5 +1,6 @@
 ---
 title: 学习方法-笔记（持续更新）
+top: 99
 tags:
   - 学习方法
 categories:
