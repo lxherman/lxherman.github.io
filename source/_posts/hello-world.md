@@ -11,6 +11,7 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 
 <!--more-->
 ## 个人test
+&#160; &#160; &#160; &#160;空格
 <center>居中</center>
 
 <p align="right">右对齐</p>
