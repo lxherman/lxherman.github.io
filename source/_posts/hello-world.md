@@ -12,6 +12,9 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 <!--more-->
 ## 个人test
 <center>居中</center>
+
+<blockquote class="blockquote-center">优秀的人，不是不合群，而是他们合群的人里面没有你</blockquote>
+
 <p align="right">右对齐</p>
 
 {% centerquote %}引用块{% endcenterquote %}
