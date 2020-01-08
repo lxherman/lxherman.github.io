@@ -14,6 +14,10 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 &#160; &#160; &#160; &#160;空格
 <center>居中</center>
 
+<center>
+<img src="https://s2.ax1x.com/2020/01/08/l2CuxH.png" width=20% />
+</center>
+
 <p align="right">右对齐</p>
 
 {% centerquote %}引用块{% endcenterquote %}
