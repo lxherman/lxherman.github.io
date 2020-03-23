@@ -1,39 +1,651 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>逆向记录-某货币交易平台sign逆向（断点调试）</title>
+    <url>/2020/03/10/spider-reverse-mxc/</url>
+    <content><![CDATA[<blockquote>
+<p>&#160; &#160; &#160; &#160;最近在做一些web页面上的逆向学习记录，这篇文章适合需要学习使用浏览器的Breakpoints断点调试完成逆向工作的朋友。<br>&#160; &#160; &#160; &#160;本文只有一个重点：必须掌握的-最基本的fetch breakpoints姿势。<br><a id="more"></a><br><blockquote><footer><strong>本文参考自大佬</strong><cite><a href="https://cloudcrawler.club/qing-js-ni-xiang-fen-xi-zan-jing-yan-xiang-mu-zhi-mou-jiao-yi-suo-sign-jia-mi-can-shu-ni-xiang-fen-xi.html" target="_blank" rel="noopener">云爬虫技术研究笔记</a></cite></footer></blockquote></p>
+</blockquote>
+<div class="note danger">
+            <p>郑重声明：<br>本项目的所有代码和相关文章， 仅用于经验技术交流分享，禁止将相关技术应用到不正当途径，因为滥用技术产生的风险与本人无关。如有侵权，请联系作者删除。</p>
+          </div>
+]]></content>
+      <categories>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+        <tag>逆向</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>cmder下使用virtualenv和condaenv</title>
+    <url>/2020/02/23/python-env/</url>
+    <content><![CDATA[<blockquote>
+<p>&#160;&#160;&#160;&#160; 今天用到了一个很强大的工具——<a href="https://cmder.net/" target="_blank" rel="noopener">cmder</a><br>&#160;&#160;&#160;&#160; 简洁美观的界面，便捷的操作，我现在已经看不下去windows的原生cmd了。<br><a id="more"></a></p>
+</blockquote>
+<h2 id="CMDer的使用"><a href="#CMDer的使用" class="headerlink" title="CMDer的使用"></a>CMDer的使用</h2><p>&#160;&#160;&#160;&#160; 使用了cmder之后，我遇到一个问题：如何连接我的anaconda虚拟环境，并将它设为默认？<br>&#160;&#160;&#160;&#160; 摸索一番之后，发现如下解决方法：</p>
+<ol>
+<li>进入cmder的settings-startup-Tasks</li>
+<li>“+”号新建一个task，我取名叫anaconda，emmm…..格式具体原因没有深究。</li>
+<li>修改task参数</li>
+</ol>
+<p><img src="https://s2.ax1x.com/2020/02/23/31uJt1.png" alt></p>
+<p>&#160;&#160;&#160;&#160; 箭头1处是我启动anaconda的base虚拟环境的脚本文件(activate.bat)地址，箭头2处是新窗口打开时的默认路径，再勾选下default task for new console（箭头3），然后save settings。</p>
+<p>&#160;&#160;&#160;&#160; 搞定！下次再ctrl + t 新建tab的时候，就会默认使用这个虚拟环境的配置啦。</p>
+<hr>
+<h2 id="virtualenv和condaenv的使用"><a href="#virtualenv和condaenv的使用" class="headerlink" title="virtualenv和condaenv的使用"></a>virtualenv和condaenv的使用</h2><p>&#160;&#160;&#160;&#160; (当然前提是你已经安装了virtualenv、virtualenvwrapper和anaconda)</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>virtualenv操作</th>
+<th>condaenv操作</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>workon</td>
+<td>conda env list</td>
+<td>查看创建的所有虚拟环境</td>
+</tr>
+<tr>
+<td>mkvirtualenv —python=绝对路径\python.exe 虚拟环境名</td>
+<td>conda create -n 虚拟环境名 python=PY版本</td>
+<td>根据python版本创建虚拟环境</td>
+</tr>
+<tr>
+<td>workon 虚拟环境名</td>
+<td>activate 虚拟环境名</td>
+<td>进入虚拟环境</td>
+</tr>
+<tr>
+<td>deactivate</td>
+<td>deactivate</td>
+<td>退出虚拟环境</td>
+</tr>
+<tr>
+<td>rmvirtualenv 虚拟环境名</td>
+<td>conda remove -n 虚拟环境名 —all</td>
+<td>删除虚拟环境</td>
+</tr>
+</tbody>
+</table>
+</div>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>cmder</tag>
+        <tag>virtualenv/condaenv</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>逆向记录-某共享充电宝微信小程序sign参数破解</title>
+    <url>/2020/01/07/spider-reverse-xd/</url>
+    <content><![CDATA[<blockquote>
+<p>&#160; &#160; &#160; &#160;app逆向需要脱壳、反编译等操作从而获取源码。同理，微信小程序的也需要经过一系列处理才能获取源码，再通过源码寻找加密逻辑，利用python复现该接口的加密、防篡改方式，即可完成逆向。<br>&#160; &#160; &#160; &#160;本文主要分为两个部分：1、如何找到获取小程序源码 &#160; &#160;2、寻找加密函数以及复现过程<br><a id="more"></a></p>
+</blockquote>
+<div class="note danger">
+            <p>郑重声明：<br>本项目的所有代码和相关文章， 仅用于经验技术交流分享，禁止将相关技术应用到不正当途径，因为滥用技术产生的风险与本人无关。如有侵权，请联系作者删除。</p>
+          </div>
+<h1 id="逆向背景"><a href="#逆向背景" class="headerlink" title="逆向背景"></a>逆向背景</h1><h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>出于对能打脸王校长的行业的好奇和职业本能，我决定看一看充电宝小程序的数据和接口长什么样。本案例就选择XD充电宝作为分析对象。</p>
+<h2 id="分析经过"><a href="#分析经过" class="headerlink" title="分析经过"></a>分析经过</h2><p>通过mitmproxy + 夜神模拟器抓包以后。我把请求提出来在postman上测试，效果如下</p>
+<center>
+<img src="https://s2.ax1x.com/2020/01/08/l2CuxH.png" width="80%">
+</center>
+
+<p>但是我发现一个问题，一旦我隔一段时间再去访问这个接口，或者我稍微改变了请求的参数（如定位的经纬度），服务器就会返回：<code>{&quot;success&quot;:false,&quot;code&quot;:1,&quot;msg&quot;:&quot;服务器开了小差请稍后重试&quot;}</code></p>
+<p>接口具体是长什么样的呢？<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GET https:&#x2F;&#x2F;b.dian.so&#x2F;lhc&#x2F;2.0&#x2F;h5&#x2F;shop&#x2F;gets?sign&#x3D;5d8260aeee65754610ee5528f6a21bcd&amp;t&#x3D;1578466598885&amp;appType&#x3D;0&amp;data&#x3D;&#123;&quot;keywords&quot;:&quot;&quot;,&quot;deviceType&quot;:0,&quot;latitude&quot;:22.553314,&quot;longitude&quot;:114.115462,&quot;offset&quot;:0,&quot;pageSize&quot;:100,&quot;userLatitude&quot;:22.542807074652778,&quot;userLongitude&quot;:114.05800754123264,&quot;priShopType&quot;:0,&quot;secShopType&quot;:0&#125;</span><br></pre></td></tr></table></figure><br>把他拆开，连接分为三个部分：</p>
+<ul>
+<li>接口部分：该接口是用于返回附近商家的列表。<br><code>https://b.dian.so/lhc/2.0/h5/shop/gets</code></li>
+<li>请求参数1：包含了sign（签名）参数、请求发生的时间戳（毫秒）、appType<br><code>sign=5d8260aeee65754610ee5528f6a21bcd&amp;t=1578466598885&amp;appType=0</code></li>
+<li>请求参数2：可以理解为请求体，内有待返回的设备型号、坐标、用户坐标等。<br> <code>data={&quot;keywords&quot;:&quot;&quot;,&quot;deviceType&quot;:0,&quot;latitude&quot;:22.553314,&quot;longitude&quot;:114.115462,&quot;offset&quot;:0,&quot;pageSize&quot;:100,&quot;userLatitude&quot;:22.542807074652778,&quot;userLongitude&quot;:114.05800754123264,&quot;priShopType&quot;:0,&quot;secShopType&quot;:0}</code></li>
+</ul>
+<p>经过推测，原因就是接口加上了sign防止篡改请求。为了验证我的假设，我决定看看小程序的代码到底是怎么写的。</p>
+<h1 id="解析wxapkg文件获取源码"><a href="#解析wxapkg文件获取源码" class="headerlink" title="解析wxapkg文件获取源码"></a>解析wxapkg文件获取源码</h1><p><em>这里要用到adb工具，它可以在命令行与客户端进行通信。没配置的建议百度一下。</em></p>
+<h2 id="首先连接夜神模拟器"><a href="#首先连接夜神模拟器" class="headerlink" title="首先连接夜神模拟器"></a>首先连接夜神模拟器</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adb connect 127.0.0.1:62001</span><br><span class="line">adb shell</span><br></pre></td></tr></table></figure>
+<p><strong>注意，每个模拟器、客户端连接的初始端口号不一样</strong></p>
+<blockquote>
+<p>夜神模拟器：62001<br>MUMU模拟器：7555<br>逍遥模拟器：21503<br>成功连接如图</p>
+<center>
+<img src="https://s2.ax1x.com/2020/01/08/l29hUf.png" width="80%">
+</center>
+
+</blockquote>
+<h2 id="找到小程序所在的文件目录"><a href="#找到小程序所在的文件目录" class="headerlink" title="找到小程序所在的文件目录"></a>找到小程序所在的文件目录</h2><p>一般来说，微信小程序的目录都存放在下面这个路径，cd进去就好了<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;data&#x2F;data&#x2F;com.tencent.mm&#x2F;MicroMsg&#x2F;326687790a68a9f2b4338b778052b9a2&#x2F;appbrand&#x2F;pkg</span><br></pre></td></tr></table></figure></p>
+<p>但是这里有个问题：<code>326687790a68a9f2b4338b778052b9a2</code> 是用户的文件夹，如果登录过多个微信号，我们怎么才能判断进入到哪个文件夹下面呢？MicroMsg文件夹下大概长这样</p>
+<center>
+<img src="https://s2.ax1x.com/2020/01/08/l297vj.png" width="80%">
+</center>
+解决方法：我个人是通过重新登录这个账号，然后对比文件夹的修改时间与我登录的时间，找到时间最接近的那个，自然就对应一个微信号了。
+
+进入到pkg文件夹后可以看到
+
+<center>
+<img src="https://s2.ax1x.com/2020/01/08/l29bKs.png" width="80%">
+</center>
+
+<p>问题又来了，哪个才是XD小程序的包？<br>类比上一个问题的解决方法，我在模拟器上重新删除小程序，再添加回来，再从pkg文件夹下找到与添加小程序的时间最接近的那个，就肯定是我们要拿到的小程序包了，这里是 <code>_-2089721779_438.wxapkg</code></p>
+<center>
+<img src="https://s2.ax1x.com/2020/01/08/l2eDeg.png" width="80%">
+</center>
+
+<h2 id="解wxapkg包"><a href="#解wxapkg包" class="headerlink" title="解wxapkg包"></a>解wxapkg包</h2><p>夜神模拟器和电脑之间有一个共享文件夹<br>PC端路径：<code>C:\Users\Administrator\Nox_share</code><br>模拟器端路径：<code>/mnt/shared</code><br>使用cat命令吧wxapkg包复制一份在这个文件夹内，就可以在电脑上看到它了。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat _-2089721779_438.wxapkg &gt;&#x2F;mnt&#x2F;shared&#x2F;xd.wxapkg</span><br></pre></td></tr></table></figure>
+<p>下面需要用工具解析这个包的内容，我这里使用的是WxApkgUnpacker解包器。<br>我把他放在<a href="https://pan.baidu.com/s/1ej92Ioq3tQ9tCwkr0-cSWQ" target="_blank" rel="noopener"><strong>百度网盘</strong></a>里了（提取码：<code>0chj</code>）</p>
+<center>
+<img src="https://s2.ax1x.com/2020/01/08/l29IPS.png" width="50%">
+</center>
+
+<p>把wxapkg包解析后放入文件夹下，就大工告成了。</p>
+<h1 id="寻找加密函数并用python重写"><a href="#寻找加密函数并用python重写" class="headerlink" title="寻找加密函数并用python重写"></a>寻找加密函数并用python重写</h1><p>我们来看看解析后的文件夹里有什么</p>
+<center>
+<img src="https://s2.ax1x.com/2020/01/08/l29fVP.png" width="80%">
+</center>
+
+<p>下面我们验证一下，能不能在这些文件内找到之前提到的接口信息。<br>进入到<code>app-service.js</code>中，以<code>h5/shop/gets</code>为关键字检索一下这个文件，看我们发现了什么</p>
+<center>
+<img src="https://s2.ax1x.com/2020/01/08/l2QnWd.png" width="100%">
+</center>
+
+<p>如上所示，sign、时间戳、appType都在这个函数里了。</p>
+<blockquote>
+<p><em>BTW，刚开始打开<code>app-service.js</code>时，文件内容很乱，在vscode中我们可以使用<code>Beautify</code>这个插件美化一下代码，更易于阅读。</em></p>
+</blockquote>
+<center>
+<img src="https://s2.ax1x.com/2020/01/08/l29458.png" width="50%">
+</center>
+
+
+<p>剩下的就是<strong>耐心</strong>阅读js代码。这里就不贴python复现后的代码了，大概说下签名的思路。（如有完整复现过程的需要，大家可以联系我补充：wx : <code>lxh_Herman</code>）</p>
+<p>XD充电小程序的sign加密还是比较简单常规的</p>
+<ul>
+<li>把各个参数进行一个sort排序</li>
+<li>序列化，二进制编码</li>
+<li>md5加密<br>最后在请求中带上md5加密过后的字符串放到sign参数中就可以了。</li>
+</ul>
+<p>用postman测试下我们构造出来的url，发现可以返回正确的商户数据，至此，XD小程序sign参数逆向全部完成。</p>
+]]></content>
+      <categories>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+        <tag>逆向</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2019年终总结</title>
+    <url>/2020/01/02/year-end-summary-2019/</url>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试。" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容。"><div class="hbe-input-container"><input type="password" id="hbePass" placeholder="天王盖地虎" /><label>天王盖地虎</label><div class="bottom-line"></div></div><script id="hbeData" type="hbeData" data-hmacdigest="2ca6ee6f02681ba38bc1bbac6e4fea3239919a3fa6243331b9e800358c1deb70">025334e93103909662fa6fec14c16471166292ea109a4223ec2fa7f11e9a7e6549c44e8713bb8dafb65d1fcaf199bff219b3c56eb2eb37a48a52ec6360f6c17369f87814caa93704b7442aa6ffbb8be56958bf18836075d60742a0c830865a81eb9a975b9954cd520c7085c9161ffeb5f5eecb1e02a558b6fe46d0ce5c01207bc1a4cd52336f0342b567762f8e52cb5c784dd4681ff98522aa83c22151fa7635f37bda5f41e77d3b12789174107728fc2967ef70c98b647351259447c591cad7b7b137741a0887cf3856b5c40cfa2825252ad92b81bec6e87151551ce98cfc6bb9bf61827b671dd5d5f624d6450accba11834a4a8410a14c3faca9ea90ce4e4d1e7b14bc94bb981c5acf007c4ea029106d0847f155defda657bdef5dfac261bafb609ed6e83c749ddf5edd00ab554905a4770f01fd07b4c2fcab286df307e27deb70830d972373f53ac253e904e0f6331596d41f85a17f13b36bdf75a20b8dbab4a53bf01035437910314dbd26e6fc0fba3b3723b91007919c3c30ef7b3325fe5afc43e18f85865f799dd0d50211ef2ffb946b2307198d1a65d0fd32854cb98a8117ecacf93b6fce21b68b3958c16d5015527f707367af535a4dd6bf9e73ec7d7e7eb82b94ae71392e6661b41ec60776f6485056c7392926aec52e7e431b4253933f1ef10d60afc1cd042ffea2bc20025129585f1234570ca27761649b4f82165efcb495cb4c7037d960c8dae95bee316eb18e42798edca13892fe62601a172940437a0cc91a31cb163306299bca9280ff940aae4a917f9d9cb12369d372354122a5586104afc908f66fb89f979643ced26a195b1b4745716921174c213ea72bcb506bb4aeae568e43eab4cb246f4f8facdcd4d9dd9365baf5b95d5160ed6a59e59d366ca0c4f723a182bef933a8ebe657d3eb136251b10589cc1bd2f9278e6e382d741b88a2be14b7a994de0de0e9905432deccdee92b18e707e3439277a5ddadc6da66e0bf60141e7a587be55bac3167583e17e0942cbac6a5cfa9781f06c7ebef41626da781191523ae528b1901e34bfa7c7ec5fb7d2be9aec2a05de0c25d6219d6239b6a6a5b983c62b5b7f7bc2df1bd814ee32a56c05da6cfeba613cc981819a55befb50dae6dd516a654679a9add63ec2a0d357ae09eb89d3a080d622a15e785d902badb9d86d2e77e0e2b114ccc77e93d19208305de6f82d27cb9a3e5dac1da51685a39565b6ea136e82bfca56bef20c9051ef4c3fc6462a377e587f7fba8cde67e84f5dad113a36fd6b8313f31004c2a42b6b38bb5dbe4ac4b8cd7f108e3e24fa1ccea7e78a6f65a00bf764af7756af89ffbc181b3c258ee3a6b71db14bc2e08696b1e6f6e9b485e985063348068b80e6a292cc228efd9ad918d7ddd61425282d846aa004f9be2d022ef58eb2a88db5642d66239b7d4c0edfeced170a48ce80ea6b55a000bc87553aa1038087a2d912737e798f7ebc0e37f0596065053a5a96e9f54fa57f1a4421a101a4a1b53491f57ab6d5d1a0e3b4c38fe95edce05410b581da0cd91da582c475ac61fa8f0f6ffbd59508b085b54036c5b4079fe2bfe883516d391ed52b10cf0c54b87f934bbece03d2c9cd16c2cf094d6f807f9302477aa7ba9b752cf125c9b549c4305d8c3b0756f2beb543ef6f26f72ec3b09815360bb197e077904c3a7d11f5b2d0aa77f59a28028505096412710774ccf2bba3b6bfa78e1ac4ef321ddce648e5953fad14c09173feb06beda40c779ed8302473361558c60fd20dc2d1a0f3a6237c9f9d3808b6b5aebddb31a2b7c59b2fd930e0ef37f9dcc6860e320f267248cb104ad2267f3422b4d50c9bb9be0130ec7624f4d6142064961bbf62b3efc0531a68a568f24c6839ad829dc4570ea6d2a5292838de8693b300ce56da3f03869f30823162bd6b2aa99a79fccfd31385b51479f602c8a1075d992111ea1bc0757bc0bbaa89e074c3700ef82b6680eafcb373f17451c5b20d23ad7ff1a01df819600e9acf4d957c4a28345bea3b381513be0ec8b1b6c45507f67c6325214cab690e80df6927e438b31fe31f4f0862e1855f1e5ccc91da1138d4e4894f9ed9b41bd4a058031776203883a37959574a9fca5ca245fd5c5793fe44b21779b7c1441cc4d63f4c070dc276bde99217eb7517876d1104adab5a0e9d9c7df4fb68a9b1de273f9b30d3e77fdb6dbb778550e856e2b1f6b25cf00b7056889fabc223530540c91a9a49f1dfd0f75dd24331565a8f5a9b1167668abbea1a097d12e3ec76d2d63a6ea1c6f280eb05dddf266539866e25da189d60976baf015307ed51fbcf73995616890e3dda7cd5ecacecdb28bc8eb35a67857aa090f870f60225ae39de9d19883c23b853c730680a3f2ad0093c242ba2e67d9fe8cc34b865cffcee9b393150244fd0cd6ea60d302eb88a88ce6fab581fb6710f9272b3f86b6987bb8bad4bc624f2e11d5eecd24aaa259fa3c3389982f4ccb1a80b167e1f76567283027f9c56d84570f46c487439f65307e49de1193fb3d87a686f20b5f9b6b04ebf8a2b9c073eb1e4bb7efdb64e1e7d06d5d85600a7d54998f2c8c7c9660b50a562c2081d167b7407774c3119d2eccb3a942851aa55b03f22fb4c8266047bdf581b44386080378e05b3075fff4bb1e6bdcd838590ef36f0cc797ab829a0eba13148b58fc9a2be635cd59da126f7d7cdb1b7f1c4caa0b1ba9eeabd71fd9b60b9a525aa55672a03a3cf6fdd6ca280ab59765106f8b9012d0f669a5c5dc7a8632f7eea6bb8ffdc854fa7d71f2beb8dd3fe441af87f4a0f77f3b71ea0613067d6166a6e1eced66f2f0f289edba7d0d9cd0bebcb87fb7563d2919dd1a43d69bc1972c301ea59e4d2d2e05e3172f272f0a25f2332e9cff4e0a63a0033cbb605a9cdbf03aecf8550019eb3823b3c1e163a52497b1690ee731ba688078341722423b8bc54a7784c91694338e5a5dcaa5b8eff3c168e42ae4646f286dde7d59108f81d1f17fd6f33abe456337d48908e876ddc501d78c52b535a0105ce4b7588cf276758fa8ce2f2d71aaa086031633ce6eb257b0548cafc5d691a209b9b9e3561ef9cfc62861391a6b882e6c4f80c1feb2cf7225c2b19af822966c170b9899d55e444422d6398eb49780656c654408d5d466e168295bcd3524363aac292635956aab6c6badc58b341278d21858ba817663d81639d41c3bf5203a2abe0e3a71c082691c4650a751826108237ae1783f211ea048d17c401ef28afb7304435f389a7b51aa88524ccf75786c5ccf40dcb3fdad0c36bc954bea0eef511426c0a33fc669c391041d7ead3a53099cea4629460e7b03ed739100fc0f6d3ec3ba6725bd75186fdb0c71a4140d17d58a1e5446c1b931e3058a71f0bc3258225045557d2414ff584af8097ffa2acc9e18e9ad6b45b884380bf039826ec52a56975e6bbd65e14d341d29516301acc22d86d808de4777bb7159e8fc28017374a906f49e7d5d00db576773cd620267e2f376898450d78c3836ad756ea329ca72ae845aeadb5e3afc8f29b01842264493f81ab120b0c93dcedadf7ef095c2044c19d21c9317ef6b7bb78871658249696dde1b62ef782c0dc8f0ca28b021ce30dc8bf446e91d36a0500d2556edaae497556ebea9b0c7b2035d02b16ba7780813491143fd22d499f22152e6776efc497614b8a7295b3bc28c3094ff97588ed537ee174517e98ebe0dc130a288e4cac04c8503edb5e0cddeae9852ebddc1f64f4bb94f20cf917450107f8e0e98293e8075f1d41303c3a52c966e4229a4f0a75a5707972751b9a28f1da46a140d4e919f7a93c400741b37ba4dd8398995a090534be07f301d104f31b8add5ce9338d3f98921825a07bbea83c1dd8e29a2983b3bf0b2cf62dbe22e85034ffb133507bbc2f2fd94c3abff88512c579c7ad21420c4670795cdb291e47c5a50cfa29bc0b63970bad7400123bbd155e6f8308ca8b55e7a6d4c777ce318a43d8e39e2700163e328370dc68e3e2ae841887aa144396153b7f174aaf91b9e08341a9994787d2d3f01f46ec7b4e5b08f1754484795cf4368a0ece75ccb819e17b24ebbb31401b55395a504eab42feb50fd43da97be8fd6d9535cc4f693febe1e27abe7276da64e598ed38689361f07cecbd0810a6f237058cebc226b3526fff610f9b71ef558f4d382e0c23cfc237f109368070f2e9175d8eccafa7a673fdab0073fe801a6af74679888a7aaedd0753c738c74f4aa35e3857ccd899bde5bfbddd102c6e91c50c28559df53dc940c2236b9e6274fdd662cc7032233ac75cf8a0a92ffa6f46e6458990bfe25af1c1a9a75bec173eb86b006fffc91610a128ccf2534c84786be659e64847653b8a1f8b65d0575b65db1ca4a8fe15f46e280372640df0c4ec39cbbab5541e5c981aa74f1d5addcfe015947549c2e13b58f9a53a739a32f164b8e411046bfc12f205ae3f26d0ec15a261ee602b595c95408d827259b2a2dd4c9842735e687bf46a3c20365379a2e19203296d158f5a36ced67b4ce3da2f2085b53064c5283740db352300e67070bc5eb081edf314038bc544c815072de6d07bf488d87632cdc452eef466be0f37d7ed684aafa5785a0691a85ff798cac9c363b4e28bef765ca37272a1cd9c5f1ea06853f53b785a246b6ea3d1e6148f450068004cc94427f7b515c9a47892335dd0f4025618d7c34f3e67045b7710abaf67337276c7042414685a2e5338b11b986058a35f6111b42edc1804d50ccf04ab90d174fe623aa5d1c0f10d088160493f7619b9d2b923dabd83bc20895b4d3895377639644dbec81b8b99bde490f76241fcc864b9c7e7dfb9089cb1ef8f03d6a36dd5af2174193b5217e8b828e3416e7dfbea9b44d9943b830c4ee6b323f36da826c101fe03f62e36a93fc26deb4dbec33b2f497f61b9dfbbbb636a104914788060aff6460c721863442ae00af602573f6945d8fb9d0dddb6b72ba0e87f8c0e92b576e49ffae9042a1556bebf5fee320c5b422fe2188fa0ea6a73ed02f280e22677bf8aae40f30abde7832902c80e9422303a48cb467e028989ab419cf41cf334048378c4d42d7c0abedb6ac625ed952776dc20e4258e31f2cb96764eeb83eddfebbc18b9bf10a2f1dfb4fa4551ec0b2c9d8aeccdec6f2c8b9d98f822abe723c02b2f6463e4627a3db7aee16a343119ba4e934adcade3c51e7a6a74d80edf1904f73d99cdcbf08e935588ef654d519cf1733689a70f7e6fcb88747592a98261e44883e3a29dac401c048fcfeedb2b1ce6a5f86168dfb202750cd3725ddb522ff74e689036fd2ad375ed844f409cf582be0e8592f57035e3941b9199322c6aedffb15e83595599bfc1bc8ccf60a7340424c2591fe5c0e58c86a82dbdcdb88207a5f388cae018fdf73eca7b46a853ead14368d7bec0796b5bb543156263c4fa0af133bac4d6c8b3424ead4780f69a1817d87d3996581357688e2c0648492fe87bfed2e03c4c97c1d587fe5244cb771c1bd2399cb3d115c8c889737b9b6c3bd4dd46de7bd95312c78552cb45c6e7876d5b4eecbde86f0fb5397173adf55e8c02770324960896bac24c0f3c01b619feb701c7adbdce254fe182a3fa70b53f54685afe2699dfa1de4596b74fec68fc833dc123be81920b5a5e3526dbb9bd69052cdb4d36fbe4a3182535476cfc46fc6cd39d91873a62629a613d1fbb17ea44f97775d6ce3ed2523b995278292f3616b5643006cd3484616a59f133918da58002b71db061acc86ff1363b98f25d6be11aec3ebee010619ac4cf0af4817fbf430dfe03262f9eab3cac12d2cb9eaedb850f6ae363f9d1fb5ae36531b20d536ef1c</script></div><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>年终总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>多线程&amp;多进程(补充)</title>
+    <url>/2019/12/31/python-multiprocess3/</url>
+    <content><![CDATA[<blockquote>
+<p>&#160; &#160; &#160; &#160;在写代码的时候，我发现以下两种代码编写方式，看起来都是多线程，但是其运行时间，和线程对象却有差别，这种情况我以前忽视了，现记录一下。<br><a id="more"></a><br>代码示例如下：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#代码一</span></span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CodingThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'%s正在写代码'</span> % threading.current_thread())</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DrawingThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'%s正在画图'</span> % threading.current_thread())</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">multi_thread</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        CodingThread().start()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        DrawingThread().start()</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    start = time.time()</span><br><span class="line">    multi_thread()</span><br><span class="line">    print(<span class="string">'共耗时：'</span>,time.time()-start)</span><br></pre></td></tr></table></figure><br>输出：</p>
+</blockquote>
+<p><img src="/2019/12/31/python-multiprocess3/1.png" alt="代码一输出"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#代码二</span></span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CodingThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">            print(<span class="string">'%s正在写代码'</span> % threading.current_thread())</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DrawingThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">            print(<span class="string">'%s正在画图'</span> % threading.current_thread())</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">multi_thread</span><span class="params">()</span>:</span></span><br><span class="line">    t1 = CodingThread()</span><br><span class="line">    t2 = DrawingThread()</span><br><span class="line"> </span><br><span class="line">    t1.start()</span><br><span class="line">    <span class="comment"># t1.join()</span></span><br><span class="line">    t2.start()</span><br><span class="line">    <span class="comment"># t2.join()</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    start = time.time()</span><br><span class="line">    multi_thread()</span><br><span class="line">    print(<span class="string">'共耗时：'</span>,time.time()-start)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<p><img src="/2019/12/31/python-multiprocess3/2.png" alt="代码二输出"></p>
+<p>&#160; &#160; &#160; &#160;不难看出，第一个代码执行时，调用了10个不同的线程对象，并且其子线程全部结束之后主线程才输出耗时时间并结束。但是代码二执行时，只调用了2个线程对象，主线程并不会等待子线程结束。<br>&#160; &#160; &#160; &#160;个人分析其原因，是因为start()方法决定了线程的分配。例如代码一中，对for循环中的每一个操作都单独分配了一个线程，所以总共循环十次，有十个线程，等待循环结束后，主线程才结束。但在代码二中，将继承了threading.Thread的类单独分配了线程，所以有2个类，就有两个线程，类中的for循环是在同一个线程之中完成的，所以主线程不会等待子线程结束。</p>
+<p>&#160; &#160; &#160; &#160;另外，我发现代码一的运行时间要比代码二要长，但是以上示例代码的循环次数太少，对比不够明显，并且代码二中主线程可能会先于子线程执行完毕，所以将循环次数都改为10000，再将代码二改写一下，把multi_thread()函数中的注释行取消，如下：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">multi_thread</span><span class="params">()</span>:</span></span><br><span class="line">    t1 = CodingThread()</span><br><span class="line">    t2 = DrawingThread()</span><br><span class="line"> </span><br><span class="line">    t1.start()</span><br><span class="line">    t1.join()</span><br><span class="line">    t2.start()</span><br><span class="line">    t2.join()</span><br></pre></td></tr></table></figure><br>&#160; &#160; &#160; &#160;在《多线程&amp;多进程(上)》中也已经说明了join()可以使主线程等待子线程执行完之后再关闭，所以改写过后就可以计算整个程序运行的时间了。<br>改写后的代码输出如下：</p>
+<p><img src="/2019/12/31/python-multiprocess3/3.png" alt="代码一输出（改进）"></p>
+<p><img src="/2019/12/31/python-multiprocess3/4.png" alt="代码二输出（改进）"></p>
+<p>&#160; &#160; &#160; &#160;是什么造成了这样的差距呢？我分析是因为代码一不断的切换线程，造成了一部分开销，而代码二只在两个线程中完成操作，就少了切换线程的开销，所以切换线程次数多的代码一耗时长。而我们知道切换进程的开销比线程还要大，所以还需对比一下多进程的效果。</p>
+<p><em>错误之处希望大神指出。</em></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>多线程</tag>
+        <tag>多进程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>多线程&amp;多进程(下)</title>
+    <url>/2019/12/30/python-multiprocess2/</url>
+    <content><![CDATA[<blockquote>
+<p>&#160; &#160; &#160; &#160;在《多线程&amp;多进程(上)》中，记录了python中的threading模块常用的类的使用方法，对比了Lock/RLock和condition版本的生产者与消费者的问题，但是python中并不支持真正的支持多线程，不能充分的利用多核cpu的资源，大部分情况下使用的是多进程。在下半部分中，将记录多进程的使用。<br><a id="more"></a></p>
+<h1 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h1><p>&#160; &#160; &#160; &#160;<a href="https://docs.python.org/3.5/library/multiprocessing.html" target="_blank" rel="noopener"><strong>官方文档</strong></a><br> &#160; &#160; &#160; &#160; <a href="http://naotu.baidu.com/file/6f0756e06d4f7ce38c35bf41bb25c9a8?token=f4fdf3a74e15b490" target="_blank" rel="noopener">multiprocessing模块常用的类和方法(脑图)</a><br>本节将介绍：</p>
+<ul>
+<li>Process（用于创建进程模块）</li>
+<li>Pool（用于创建管理进程池）</li>
+<li>Queue（用于进程通信，资源共享）</li>
+<li>Lock</li>
+<li>Pipe（用于管道通信）</li>
+<li>Semaphore</li>
+</ul>
+</blockquote>
+<h2 id="Process模块"><a href="#Process模块" class="headerlink" title="Process模块"></a>Process模块</h2><ul>
+<li><strong>基本使用</strong><br>&#160; &#160; &#160; &#160;在multiprocessing中，每一个进程都用一个Process类来表示。其用法和Thread对象的用法很相似，也有start(),run(),join()等方法。Process类适合简单的进程创建，如需资源共享可以结合multiprocessing.Queue使用；如果想要控制进程数量，则建议使用进程池Pool类。<br>首先看下它的API<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Process([group [, target [, name [, args [, kwargs]]]]])</span><br></pre></td></tr></table></figure></li>
+<li>target：调用对象，你可以传入方法的名字。</li>
+<li>args：被调用对象的位置参数元组，比如target是函数a，他有两个参数m，n，那么args就传入(m, n)即可。</li>
+<li>kwargs：调用对象的字典。</li>
+<li>name：别名，相当于给这个进程取一个名字。</li>
+<li>group：线程组，目前还没有实现，库引用中提示必须是None。</li>
+</ul>
+<p>其包含以下<strong>实例方法</strong>，和Thead类似：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">is_alive()</td>
+<td style="text-align:left">返回进程是否在运行</td>
+</tr>
+<tr>
+<td style="text-align:center">join([timeout])</td>
+<td style="text-align:left">阻塞当前上下文环境的进程程，直到调用此方法的进程终止或到达指定的timeout（可选参数）</td>
+</tr>
+<tr>
+<td style="text-align:center">start()</td>
+<td style="text-align:left">进程准备就绪，等待CPU调度</td>
+</tr>
+<tr>
+<td style="text-align:center">run()</td>
+<td style="text-align:left">strat()调用run方法，如果实例进程时未制定传入target，这star执行t默认run()方法。</td>
+</tr>
+<tr>
+<td style="text-align:center">terminate()</td>
+<td style="text-align:left">不管任务是否完成，立即停止工作进程。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Process类中创建多进程有两种方法</strong>：<br>（1）用法与threading类似<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process  <span class="comment">#导入Process模块 </span></span><br><span class="line"><span class="keyword">import</span> os  </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(name)</span>:</span></span><br><span class="line">	<span class="string">'''</span></span><br><span class="line"><span class="string">	函数输出当前进程ID，以及其父进程ID。</span></span><br><span class="line"><span class="string">	此代码应在Linux下运行，因为windows下os模块不支持getppid()</span></span><br><span class="line"><span class="string">	'''</span></span><br><span class="line">	print(<span class="string">"Process ID： %s"</span> % os.getpid())</span><br><span class="line">	print(<span class="string">"Parent Process ID： %s"</span> % os.getppid())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>: </span><br><span class="line">	<span class="string">'''</span></span><br><span class="line"><span class="string">	windows下，创建进程的代码一下要放在main函数里面</span></span><br><span class="line"><span class="string">	'''</span> </span><br><span class="line">	proc = Process(target=test, args=(<span class="string">'nmask'</span>,))  </span><br><span class="line">	proc.start()  </span><br><span class="line">	proc.join()</span><br></pre></td></tr></table></figure><br>（2）继承Process类，修run函数代码<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyProcess</span><span class="params">(Process)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    继承Process类，类似threading.Thread</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, arg)</span>:</span></span><br><span class="line">        super(MyProcess, self).__init__()</span><br><span class="line">        <span class="comment">#multiprocessing.Process.__init__(self)</span></span><br><span class="line">        self.arg = arg</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        重构run函数</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        print(<span class="string">'nMask'</span>, self.arg)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        p = MyProcess(i)</span><br><span class="line">        p.start()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        p.join()</span><br></pre></td></tr></table></figure><br><strong>Process 的属性</strong>：</p>
+<ul>
+<li>authkey</li>
+<li>daemon：和线程的setDeamon功能一样（将父进程设置为守护进程，当父进程结束时，子进程也结束）。</li>
+<li>exitcode(进程在运行时为None、如果为–N，表示被信号N结束）。</li>
+<li>name：进程名字。</li>
+<li>pid：进程号。<br>例如使用daemon属性：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyProcess</span><span class="params">(Process)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, loop)</span>:</span></span><br><span class="line">        Process.__init__(self)</span><br><span class="line">        self.loop = loop</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> count <span class="keyword">in</span> range(self.loop):</span><br><span class="line">            time.sleep(<span class="number">1</span>)</span><br><span class="line">            print(<span class="string">'Pid: '</span> + str(self.pid) + <span class="string">' LoopCount: '</span> + str(count))</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>, <span class="number">5</span>):</span><br><span class="line">        p = MyProcess(i)</span><br><span class="line">        p.daemon = <span class="literal">True</span></span><br><span class="line">        p.start()</span><br><span class="line">        <span class="comment">#p.join()</span></span><br><span class="line"> </span><br><span class="line">    print(<span class="string">'Main process Ended!'</span>)</span><br></pre></td></tr></table></figure>
+输出结果为：<br><code>Main process Ended!</code><br>&#160; &#160; &#160; &#160;因为主进程只输出一句话就结束了，并且我们设置了p.daemon=True，所以此时并不会等待子进程结束，类似多线程里说介绍的，我们同样可以使用join()方法，就可等待子进程完成再结束主进程了（将上面代码中p.join() 取消注释即可）。</li>
+</ul>
+<h2 id="Pool模块"><a href="#Pool模块" class="headerlink" title="Pool模块"></a>Pool模块</h2><p>&#160; &#160; &#160; &#160;Pool模块是用来创建管理进程池的，当子进程非常多且需要控制子进程数量时可以使用此模块。　Multiprocessing.Pool可以提供指定数量的进程供用户调用，当有新的请求提交到pool中时，如果池还没有满，那么就会创建一个新的进程用来执行该请求；但如果池中的进程数已经达到规定最大值，那么该请求就会等待，直到池中有进程结束，才会创建新的进程来执行它。在共享资源时，只能使用Multiprocessing.Manager类，而不能使用Queue或者Array。<br>&#160; &#160; &#160; &#160;我们看看它的API：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Pool([processes[, initializer[, initargs[, maxtasksperchild[, context]]]]])</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>processes ：使用的工作进程的数量，如果processes是None那么使用 os.cpu_count()返回的数量。</li>
+<li>initializer： 如果initializer是None，那么每一个工作进程在开始的时候会调用initializer(*initargs)。</li>
+<li>maxtasksperchild：工作进程退出之前可以完成的任务数，完成后用一个新的工作进程来替代原进程，来让闲置的资源被释放。maxtasksperchild默认是None，意味着只要Pool存在工作进程就会一直存活。</li>
+<li>context: 用在制定工作进程启动时的上下文，一般使用 multiprocessing.Pool() 或者一个context对象的Pool()方法来创建一个池，两种方法都适当的设置了context。</li>
+</ul>
+<p>其包含如下<strong>实例方法</strong>：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">apply_async(func[, args[, kwds[, callback]]])</td>
+<td>非阻塞</td>
+</tr>
+<tr>
+<td style="text-align:center">apply(func[, args[, kwds]])</td>
+<td>阻塞</td>
+</tr>
+<tr>
+<td style="text-align:center">close()</td>
+<td>关闭pool，使其不在接受新的任务。</td>
+</tr>
+<tr>
+<td style="text-align:center">terminate()</td>
+<td>关闭pool，结束工作进程，不在处理未完成的任务。</td>
+</tr>
+<tr>
+<td style="text-align:center">join()</td>
+<td>主进程阻塞，等待子进程的退出， join方法要在close或terminate之后使用。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Pool使用方法</strong>：<br>（1）Pool+map函数<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(i)</span>:</span></span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</span><br><span class="line">	lists=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">	pool=Pool(processes=<span class="number">2</span>) <span class="comment">#定义最大的进程数</span></span><br><span class="line">	pool.map(test,lists)<span class="comment">#map的第二个参数必须是一个可迭代变量--如list。</span></span><br><span class="line">	pool.close()</span><br><span class="line">	pool.join()</span><br></pre></td></tr></table></figure><br><code>此写法缺点在于只能通过map向函数传递一个参数。</code></p>
+<p>（2）异步进程池（非阻塞）<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(i)</span>:</span></span><br><span class="line">	print(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</span><br><span class="line">	pool = Pool(processes=<span class="number">10</span>)</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">500</span>):</span><br><span class="line">		pool.apply_async(test, args=(i,)) <span class="comment">#维持执行的进程总数为10，当一个进程执行完后启动一个新进程.       </span></span><br><span class="line">	print(<span class="string">"test"</span>)</span><br><span class="line">	pool.close()</span><br><span class="line">	pool.join()</span><br></pre></td></tr></table></figure><br>输出：</p>
+<p><img src="/2019/12/30/python-multiprocess2/1.png" alt></p>
+<p>For循环中执行步骤：</p>
+<ul>
+<li>循环遍历，将500个子进程添加到进程池（相对父进程会阻塞）</li>
+<li>每次执行10个子进程，等一个子进程执行完后，立马启动新的子进程。（相对父进程不阻塞）</li>
+</ul>
+<p>&#160; &#160; &#160; &#160;<strong>apply_async为异步进程池写法。</strong><br>&#160; &#160; &#160; &#160;异步指的是启动子进程的过程，与父进程本身的执行（print）是异步的，而For循环中往进程池添加子进程的过程，与父进程本身的执行却是同步的。<br>注意：<strong>调用join之前，先调用close或者terminate方法，否则会出错。</strong>执行完close后不会有新的进程加入到pool,join函数等待所有子进程结束。</p>
+<p>（3）同步进程池（阻塞）<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(i)</span>:</span></span><br><span class="line">	print(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</span><br><span class="line">	pool = Pool(processes=<span class="number">10</span>)</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">500</span>):</span><br><span class="line">		pool.apply(test, args=(i,)) <span class="comment">#维持执行的进程总数为10，当一个进程执行完后启动一个新进程.       </span></span><br><span class="line">	print(<span class="string">"test"</span>)</span><br><span class="line">	pool.close()</span><br><span class="line">	pool.join()</span><br></pre></td></tr></table></figure><br>输出：</p>
+<p><img src="/2019/12/30/python-multiprocess2/2.png" alt></p>
+<p>实际测试发现，for循环内部执行步骤：</p>
+<ul>
+<li>遍历500个可迭代对象，往进程池放一个子进程</li>
+<li>执行这个子进程，等子进程执行完毕，再往进程池放一个子进程，再执行。（同时只执行一个子进程）</li>
+<li>for循环执行完毕，再执行print函数。<br>（并未实现多进程并行)</li>
+</ul>
+<h2 id="queue线程安全队列"><a href="#queue线程安全队列" class="headerlink" title="queue线程安全队列"></a>queue线程安全队列</h2><p>&#160; &#160; &#160; &#160;该用法和线程中的用法一样。</p>
+<h2 id="Lock模块"><a href="#Lock模块" class="headerlink" title="Lock模块"></a>Lock模块</h2><p>&#160; &#160; &#160; &#160;当多进程需要访问共享资源的时候，类似多线程，它同样有一个Lock类，可以避免访问的冲突。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Lock  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">l</span><span class="params">(lock, num)</span>:</span>  </span><br><span class="line">    <span class="keyword">with</span> lock: </span><br><span class="line">        <span class="comment"># lock.acquire() </span></span><br><span class="line">        print(<span class="string">"Hello Num: %s"</span> % (num))</span><br><span class="line">        <span class="comment"># lock.release()  </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:  </span><br><span class="line">    lock = Lock()  <span class="comment">#这个一定要定义为全局</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> range(<span class="number">20</span>):  </span><br><span class="line">        Process(target=l, args=(lock, num)).start()  </span><br><span class="line">        <span class="comment">#这个类似多线程中的threading，但是进程太多了，控制不了。</span></span><br></pre></td></tr></table></figure></p>
+<p>&#160; &#160; &#160; &#160;父进程的全局变量能不能被子进程共享呢？答案是否定的，如果想要共享资源，可以使用manage类，或者queue模块。但这里我就有个疑问了，不是说多线程之中的内存资源是不共享的吗，那么它的Lock有什么用呢？<br>其使用场景可以参考这篇文章：<a href="https://blog.csdn.net/u011734144/article/details/78743240" target="_blank" rel="noopener">Python的多进程锁的使用</a></p>
+<p>&#160; &#160; &#160; &#160;多进程中一般是不推荐使用资源共享，如果要使用，可以参考：<a href="https://thief.one/2016/11/24/Multiprocessing%E5%85%B1%E4%BA%AB%E8%B5%84%E6%BA%90/" target="_blank" rel="noopener">多进程共享资源</a></p>
+<h2 id="Pipe-管道"><a href="#Pipe-管道" class="headerlink" title="Pipe 管道"></a>Pipe 管道</h2><p>&#160; &#160; &#160; &#160;顾名思义，一端发一端收。Pipe可以是单向(half-duplex)，也可以是双向(duplex)。我们通过mutiprocessing.Pipe(duplex=False)创建单向管道 (默认为双向)。一个进程从PIPE一端输入对象，然后被PIPE另一端的进程接收，单向管道只允许管道一端的进程输入，而双向管道则允许从两端输入。</p>
+<h2 id="Semaphore，信号量"><a href="#Semaphore，信号量" class="headerlink" title="Semaphore，信号量"></a>Semaphore，信号量</h2><p>&#160; &#160; &#160; &#160;其是在进程同步过程中一个比较重要的角色。可以控制临界资源的数量，保证各个进程之间的互斥和同步。</p>
+<p>&#160; &#160; &#160; &#160;对于上述内容的详细解释，可以参考：<a href="https://cuiqingcai.com/3335.html" target="_blank" rel="noopener">https://cuiqingcai.com/3335.html</a></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>多线程</tag>
+        <tag>多进程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>多线程&amp;多进程(上)</title>
+    <url>/2019/12/30/python-multiprocess/</url>
+    <content><![CDATA[<p>&#160; &#160; &#160; &#160;大学的时候面试，时常被问到线程和进程的区别。时至今日，碰到爬虫中正好也要运用，再拿出来梳理一波。</p>
+<p>首先明确一些概念：</p>
+<blockquote>
+<ul>
+<li>计算机的核心是CPU，承担了所有的计算任务。一个CPU，在一个时间切片里只能运行一个程序。</li>
+<li>一个cpu一次只能执行一个进程，其它进程处于非运行状态。  <a id="more"></a></li>
+<li><strong>进程：表示程序的一次执行</strong>(打开、执行、保存…),一个进程可以包含多个线程。</li>
+<li><p><strong>线程：进程执行程序时候的最小调度单位</strong>，执行a，执行b…)。</p>
+</li>
+<li><p>每个进程都有自己独立的内存空间，<strong>不同进程之间的内存空间不共享</strong>。</p>
+</li>
+<li><p><strong>单个进程的内存空间是共享的</strong>，每个进程里的线程共享进程的内存空间，<em>通讯效率高，切换开销小</em>。</p>
+</li>
+<li><p>一条线程指的是进程中一个单一顺序的控制流。</p>
+</li>
+<li><p>一个线程在使用这个共享空间的时候，其它的线程必须等待（阻塞状态）。</p>
+</li>
+<li><p><strong>协程</strong>：又称微线程，在单线程上执行多个任务，用函数切换，开销极小。不通过操作系统调度，没有进程、线程的切换开销。</p>
+</li>
+<li><p><strong>python的多进程适用于大量的密集并行计算</strong>。</p>
+<ul>
+<li>cpu密集型：cpu使用率较高（一些复杂计算或者逻辑处理过程）。</li>
+<li><strong>多进程缺陷：多个进程之间通信成本高，切换开销大</strong>。</li>
+</ul>
+</li>
+<li><p><strong>python的多线程适用于大量密集的I/O处理</strong>(网络 - I/O，磁盘I/O，数据库I/O—读写文件、在网络间通信、以及与显示器等设备相交互等)</p>
+<ul>
+<li>程序中会存在大量I/O操作占据时间，导致线程空余时间出来。</li>
+<li><strong>多线程缺陷</strong>：同一个时间切片只能运行一个线程，不能做到高并行，但是可以做到高并发。共享内存意味着竞争，导致数据不安全，为了保护内存空间的数据安全，引入”<em>互斥锁</em> “。</li>
+</ul>
+</li>
+<li><p><strong>并行</strong>：多个CPU核心，不同的程序就分配给不同的CPU来运行。可以让多个程序同时执行。</p>
+</li>
+<li><p><strong>并发</strong>：单个CPU核心，在一个时间切片里一次只能运行一个程序，如果需要运行多个程序，则交替执行。</p>
+</li>
+<li><p><strong>GIL</strong>(Global Interpreter Lock<strong>全局解释器锁</strong>)</p>
+<ul>
+<li>python为什么不能发挥多核cpu的优势，主要就是因为GIL。GIL就像是一个通行证，拿到通行证的线程就可以进入CPU执行任务。没有GIL的线程就不能执行任务。宏观看来，<strong>其也是一把互斥锁，控制了一个进程中同一时刻只能有一个线程在执行</strong>。因为在python的字节码解释器执行程序的时候，必须是协调一致的，不能允许其他线程打断，否则会破坏解释器的状态。</li>
+</ul>
+</li>
+<li><p><strong>互斥锁</strong></p>
+<ul>
+<li><strong>python解释器会给每个线程都分配大致相等的处理器时间</strong>，由于<strong>GIL并不会保护开发者自己写的代码</strong>，所以当代码中需要某些<strong>原子操作</strong>的时候，就要自行添加互斥锁，保证一个线程在操作数据结构时，不被其他线程干扰，而破坏了数据结构的一致性。</li>
+<li>Python 在 <strong>threading</strong> 模块中提供了最简单、最有用的工具：Lock 类，该类相当于互斥锁。在开发中我们可以使用互斥锁来保护某个对象，使得在多线程同时访问某个对象的时候，不会将该对象破坏。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>&#160; &#160; &#160; &#160;下面来看看python中如何实现多线程和多进程。</p>
+<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>&#160; &#160; &#160; &#160;<strong>threading</strong>模块介绍：它是python中专门提供用来做多线程编程的模块。</p>
+</blockquote>
+<p><a href="http://naotu.baidu.com/file/8d8bb7f6c8e9bf9d831d12ff7f8f83a8?token=05e872c76bd75221" target="_blank" rel="noopener">threading模块常用的类(脑图)</a></p>
+<p>&#160; &#160; &#160; &#160;threading模块中最常用的类是Thread，包含以下方法：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">start()</td>
+<td style="text-align:left">线程准备就绪，等待CPU调度</td>
+</tr>
+<tr>
+<td style="text-align:center">join()</td>
+<td style="text-align:left">逐个执行每个线程，执行完毕后继续往下执行</td>
+</tr>
+<tr>
+<td style="text-align:center">run()</td>
+<td style="text-align:left">线程被调度后会执行该方法，如果想自定义线程类，需要重写run()方法</td>
+</tr>
+<tr>
+<td style="text-align:center">is_alive()</td>
+<td style="text-align:left">返回线程是否在运行</td>
+</tr>
+<tr>
+<td style="text-align:center">setName()</td>
+<td style="text-align:left">为线程设置名称</td>
+</tr>
+<tr>
+<td style="text-align:center">getName()</td>
+<td style="text-align:left">获取线程名称</td>
+</tr>
+<tr>
+<td style="text-align:center">setDaemon()</td>
+<td style="text-align:left">设置为守护线程</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="线程的普通创建方式"><a href="#线程的普通创建方式" class="headerlink" title="线程的普通创建方式"></a>线程的普通创建方式</h2><p>&#160; &#160; &#160; &#160;主线程不会等待子线程执行完再结束。(计算花费时间时，主线程已经结束)<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">coding</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">        print(<span class="string">'%s正在写代码'</span> % x)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">drawing</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">        print(<span class="string">'%s正在画图'</span> % x)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">single_thread</span><span class="params">()</span>:</span></span><br><span class="line">    coding()</span><br><span class="line">    drawing()</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">multi_thread</span><span class="params">()</span>:</span></span><br><span class="line">    t1 = threading.Thread(target=coding)</span><br><span class="line">    t2 = threading.Thread(target=drawing)</span><br><span class="line"> </span><br><span class="line">    t1.start()</span><br><span class="line">    t2.start()</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    single_thread()</span><br><span class="line">    print(<span class="string">'花费的时间为:'</span>,time.time() - start_time)</span><br><span class="line">    print(<span class="string">'--'</span>*<span class="number">10</span>)</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    multi_thread()</span><br><span class="line">    print(<span class="string">'花费的时间为:'</span>,time.time() - start_time)</span><br></pre></td></tr></table></figure><br>输出为：<br><code>0正在写代码</code><br><code>1正在写代码</code><br><code>2正在写代码</code><br><code>0正在画图</code><br><code>1正在画图</code><br><code>2正在画图</code><br><code>花费的时间为: 6.004063367843628</code><br><code>--------------------</code><br><code>0正在写代码</code><br><code>0正在画图</code><br><code>花费的时间为: 0.011080503463745117</code><br><code>1正在写代码</code><br><code>1正在画图</code><br><code>2正在写代码</code><br><code>2正在画图</code></p>
+<h2 id="自定义线程类"><a href="#自定义线程类" class="headerlink" title="自定义线程类"></a>自定义线程类</h2><p>&#160; &#160; &#160; &#160;为了让线程代码更好的封装。可以使用threading模块下的Thread类，继承自threading.Thread这个类，然后实现run方法，线程就会自动运行run方法中的代码。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CodingThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">            print(<span class="string">'%s正在写代码'</span> % threading.current_thread())</span><br><span class="line">            time.sleep(<span class="number">1</span>)</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DrawingThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">            print(<span class="string">'%s正在画图'</span> % threading.current_thread())</span><br><span class="line">            time.sleep(<span class="number">1</span>)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">multi_thread</span><span class="params">()</span>:</span></span><br><span class="line">    t1 = CodingThread()</span><br><span class="line">    t2 = DrawingThread()</span><br><span class="line"> </span><br><span class="line">    t1.start()</span><br><span class="line">    t2.start()</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    multi_thread()</span><br></pre></td></tr></table></figure></p>
+<h2 id="计算子线程执行的时间"><a href="#计算子线程执行的时间" class="headerlink" title="计算子线程执行的时间"></a>计算子线程执行的时间</h2><p>&#160; &#160; &#160; &#160;主线程不会等待子线程执行完毕再结束自身。可以使用Thread类的<strong>join()</strong>方法来使得子线程执行完毕以后，主线程再关闭。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">coding</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">        print(<span class="string">'%s正在写代码'</span> % x)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">drawing</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">        print(<span class="string">'%s正在画图'</span> % x)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">single_thread</span><span class="params">()</span>:</span></span><br><span class="line">    coding()</span><br><span class="line">    drawing()</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">multi_thread</span><span class="params">()</span>:</span></span><br><span class="line">    t1 = threading.Thread(target=coding)</span><br><span class="line">    t2 = threading.Thread(target=drawing)</span><br><span class="line"> </span><br><span class="line">    t1.start()</span><br><span class="line">    t1.join()</span><br><span class="line">    t2.start()</span><br><span class="line">    t2.join()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    multi_thread()</span><br><span class="line">    print(<span class="string">'花费的时间为:'</span>,time.time() - start_time)</span><br></pre></td></tr></table></figure><br>输出：<br><code>0正在写代码</code><br><code>1正在写代码</code><br><code>2正在写代码</code><br><code>0正在画图</code><br><code>1正在画图</code><br><code>2正在画图</code><br><code>花费的时间为: 6.0084145069122314</code></p>
+<h2 id="守护线程"><a href="#守护线程" class="headerlink" title="守护线程"></a>守护线程</h2><p>&#160; &#160; &#160; &#160;线程的<strong>setDaemon(True)</strong>将线程变成主线程的守护线程，意思是当主进程结束后，子线程也会随之退出。意味着当主线程结束后，程序就结束了。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">coding</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">        print(<span class="string">'%s正在写代码'</span> % x)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">drawing</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">        print(<span class="string">'%s正在画图'</span> % x)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">single_thread</span><span class="params">()</span>:</span></span><br><span class="line">    coding()</span><br><span class="line">    drawing()</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">multi_thread</span><span class="params">()</span>:</span></span><br><span class="line">    t1 = threading.Thread(target=coding)</span><br><span class="line">    t2 = threading.Thread(target=drawing)</span><br><span class="line">    t1.setDaemon(<span class="literal">True</span>)</span><br><span class="line">    t1.start()</span><br><span class="line">    t2.setDaemon(<span class="literal">True</span>)</span><br><span class="line">    t2.start()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    multi_thread()</span><br><span class="line">    print(<span class="string">'花费的时间为:'</span>,time.time() - start_time)</span><br></pre></td></tr></table></figure><br>输出：<br><code>0正在写代码</code><br><code>0正在画图</code><br><code>花费的时间为: 0.0030105113983154297</code></p>
+<h2 id="GIL-全局解释器锁"><a href="#GIL-全局解释器锁" class="headerlink" title="GIL(全局解释器锁)"></a>GIL(全局解释器锁)</h2><p>&#160; &#160; &#160; &#160;在Python的运行环境中，无论电脑是单核还是双核，操作系统同时只会执行一个线程。究其原因，是因为GIL（全局解释器锁）。</p>
+<p>&#160; &#160; &#160; &#160;在Python中，一个线程要想要执行，必须要先拿到GIL。可以吧GIL想象成一个“通行证”，并且在一个进程中，GIL只有一个。没有通行证的线程就不会被执行。</p>
+<p><strong>Python多线程的工作过程：</strong></p>
+<ul>
+<li>拿到公共数据</li>
+<li>申请GIL</li>
+<li>Python解释器调用os的原生线程</li>
+<li>os操作CPU执行运算</li>
+<li>当该线程的执行时间到了之后，无论是否执行完，GIL被释放</li>
+<li>其他线程重复上面的操作</li>
+<li>其他进程执行完成后，切换到原来的线程（从记录的上下文继续执行）</li>
+</ul>
+<h2 id="6-线程锁（Lock-RLock）"><a href="#6-线程锁（Lock-RLock）" class="headerlink" title="6. 线程锁（Lock,RLock）"></a>6. 线程锁（Lock,RLock）</h2><p>&#160; &#160; &#160; &#160;多线程都是在同一个进程中运行的。因此在进程中的全局变量所有线程都是可共享的。这就造成了一个问题，因为线程执行的顺序是无序的。当多个线程同时修改同一条数据时可能会出现脏数据。例如：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"> </span><br><span class="line">tickets = <span class="number">0</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_ticket</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> tickets</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1000000</span>):</span><br><span class="line">        tickets += <span class="number">1</span></span><br><span class="line">    print(<span class="string">'tickets:%d'</span>%tickets)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">        t = threading.Thread(target=get_ticket)</span><br><span class="line">        t.start()</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure><br>输出：<br><code>tickets:1150827</code><br><code>tickets:1227635</code></p>
+<ul>
+<li><h3 id="互斥锁（Lock）"><a href="#互斥锁（Lock）" class="headerlink" title="互斥锁（Lock）"></a>互斥锁（Lock）</h3>&#160; &#160; &#160; &#160;为了解决以上使用共享全局变量的问题。threading提供了一个Lock类(互斥锁)，这个类可以在某个线程访问某个变量的时候加锁，其他线程此时就不能进来，直到当前线程处理完后，把锁释放了，其他线程才能进来处理。示例代码如下：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"> </span><br><span class="line">tickets = <span class="number">0</span></span><br><span class="line">gLock = threading.Lock()</span><br><span class="line"><span class="comment">#使用acquire/release</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_ticket</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> tickets</span><br><span class="line">    gLock.acquire()</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1000000</span>):</span><br><span class="line">        tickets += <span class="number">1</span></span><br><span class="line">    gLock.release()</span><br><span class="line">    print(<span class="string">'tickets:%d'</span>%tickets)</span><br><span class="line"> </span><br><span class="line"><span class="comment">#使用with lock（效果与上相同）</span></span><br><span class="line"><span class="string">'''def get_ticket():</span></span><br><span class="line"><span class="string">    global tickets</span></span><br><span class="line"><span class="string">    with gLock:</span></span><br><span class="line"><span class="string">        for x in range(1000000):</span></span><br><span class="line"><span class="string">            tickets += 1</span></span><br><span class="line"><span class="string">    print('tickets:%d'%tickets)'''</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">        t = threading.Thread(target=get_ticket)</span><br><span class="line">        t.start()</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+输出：<br><code>tickets：1000000</code><br><code>tickets：2000000</code></li>
+<li><h3 id="递归锁（RLock）"><a href="#递归锁（RLock）" class="headerlink" title="递归锁（RLock）"></a>递归锁（RLock）</h3>&#160; &#160; &#160; &#160;Lock与RLock用法大部分是相同的，很多情况下可以通用，但有细微的区别：<br>在同一线程内，对Lock进行多次acquire()操作，程序会阻塞，而Rlock不会。所以在多个锁没有释放的时候一般会使用Rlock类。</li>
+</ul>
+<h2 id="信号量（Semaphore）"><a href="#信号量（Semaphore）" class="headerlink" title="信号量（Semaphore）"></a>信号量（Semaphore）</h2><p>&#160; &#160; &#160; &#160;互斥锁同时只允许一个线程更改数据，而Semaphore是同时允许一定数量的线程更改数据 ，比如银行有3个窗口，那最多只允许3个人办理业务，后面的人只能等着，有人办理完了才能过去办理。示例代码如下:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"> </span><br><span class="line">tickets = <span class="number">0</span></span><br><span class="line">money = <span class="number">0</span></span><br><span class="line">gLock1 = threading.BoundedSemaphore(<span class="number">1</span>)</span><br><span class="line">gLock2 = threading.BoundedSemaphore(<span class="number">3</span>)</span><br><span class="line"><span class="comment">#使用acquire/release</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_ticket</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> tickets</span><br><span class="line">    gLock1.acquire()</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1000000</span>):</span><br><span class="line">        tickets += <span class="number">1</span></span><br><span class="line">    gLock1.release()</span><br><span class="line">    print(<span class="string">'tickets:%d'</span>%tickets)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_money</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> money</span><br><span class="line">    <span class="keyword">with</span> gLock2:</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1000000</span>):</span><br><span class="line">            money += <span class="number">1</span></span><br><span class="line">    print(<span class="string">'money:%d'</span>%money)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">        t1 = threading.Thread(target=get_ticket)</span><br><span class="line">        t2 = threading.Thread(target=get_money)</span><br><span class="line"></span><br><span class="line">        t1.start()</span><br><span class="line">        t2.start()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure><br>输出：<br><code>tickets:1000000</code><br><code>money:1466215</code><br><code>money:1865015</code><br><code>tickets:2000000</code><br><code>money:1524079</code><br><code>tickets:3000000</code><br>&#160; &#160; &#160; &#160;可以看出，使用了gLock1(信号量为1)的get_ticket输出数据正常，而get_money使用gLock2信号量为3，允许3个线程同时访问共享资源，导致出现脏数据。</p>
+<h2 id="事件（Event）"><a href="#事件（Event）" class="headerlink" title="事件（Event）"></a>事件（Event）</h2><p>&#160; &#160; &#160; &#160;python线程的事件用于主线程控制其他线程的执行，事件是一个简单的线程同步对象，主要提供了以下几种方法:<br>|方法|说明|<br>|:—:|—|<br>|clear()|将flag设置为“false”|<br>|set()|将flag设置为“true”|<br>|is_set()|判断是否设置了flag|<br>|wait()|一直监听flag，没有检测到会一直处于阻塞状态|<br>&#160; &#160; &#160; &#160;事件处理的机制：全局定义了一个“Flag”，如果“Flag”值为 False，那么当程序执行 event.wait 方法时就会阻塞，如果“Flag”值为True，那么event.wait 方法时便不再阻塞。示例代码：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading,time</span><br><span class="line"></span><br><span class="line">event = threading.Event()  <span class="comment"># 创建事件对象</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lighter</span><span class="params">()</span>:</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    event.set()   <span class="comment">#初始值为绿灯</span></span><br><span class="line">    <span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="number">5</span> &lt; count &lt;= <span class="number">10</span>:</span><br><span class="line">            event.clear() <span class="comment">#红灯，清楚标志位</span></span><br><span class="line">            print(<span class="string">'\33[41;1mred light is on...\033[0m'</span>)</span><br><span class="line">        <span class="keyword">elif</span> count &gt; <span class="number">10</span>:</span><br><span class="line">            event.set()   <span class="comment"># 绿灯，设置标志位</span></span><br><span class="line">            count = <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'\33[41;1mred light is on...\033[0m'</span>)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">car</span><span class="params">(name)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">if</span> event.is_set():  <span class="comment"># 判断是否设置了标志位</span></span><br><span class="line">            print(<span class="string">"[%s] 绿灯亮，请行驶..."</span> % name)</span><br><span class="line">            time.sleep(<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"[%s] 红灯亮,请等待..."</span> % name)</span><br><span class="line">            event.wait()</span><br><span class="line">            print(<span class="string">"[%s] 绿灯亮,开始行驶..."</span> % name)</span><br><span class="line"></span><br><span class="line">light = threading.Thread(target=lighter,)</span><br><span class="line"></span><br><span class="line">car = threading.Thread(target=car, args=(<span class="string">'test'</span>,))</span><br><span class="line">light.start()  </span><br><span class="line">car.start()</span><br></pre></td></tr></table></figure><br>输出：<br><img src="/2019/12/30/python-multiprocess/1.png" alt></p>
+<h2 id="条件（Condition）"><a href="#条件（Condition）" class="headerlink" title="条件（Condition）"></a>条件（Condition）</h2><p>&#160; &#160; &#160; &#160;使得线程等待，只有满足某条件时，才释放n个线程。<br>&#160; &#160; &#160; &#160;python提供的Condition对象提供了对复杂线程同步问题的支持。Condition被称为条件变量，除了提供与Lock类似的acquire和release方法外，还提供了wait、notify和notify_all方法。<br>&#160; &#160; &#160; &#160;线程首先acquire一个条件变量，然后判断一些条件。如果条件不满足则wait；如果条件满足，进行一些处理改变条件后，通过notify方法通知其他线程，其他处于wait状态的线程接到通知后会重新判断条件。不断的重复这一过程，从而解决复杂的同步问题。<br>&#160; &#160; &#160; &#160;可以认为Condition对象维护了一个锁（Lock/RLock)和一个waiting池。线程通过acquire获得Condition对象，当调用wait方法时，线程会释放Condition内部的锁并进入blocked状态，同时在waiting池中记录这个线程。当调用notify方法时，Condition对象会从waiting池中挑选一个线程，通知其调用acquire方法尝试取到锁。<br>&#160; &#160; &#160; &#160;Condition对象的构造函数可以接受一个Lock/RLock对象作为参数，如果没有指定，则Condition对象会在内部自行创建一个RLock。<br>&#160; &#160; &#160; &#160;除了notify方法外，Condition对象还提供了notifyAll方法，可以通知waiting池中的所有线程尝试acquire内部锁。由于上述机制，处于waiting状态的线程只能通过notify方法唤醒，所以notifyAll的作用在于防止有线程永远处于沉默状态。</p>
+<p>&#160; &#160; &#160; &#160;<strong>后面将对比Lock/RLock和condition版本的生产者与消费者的问题。</strong></p>
+<h2 id="生产者和消费者模式"><a href="#生产者和消费者模式" class="headerlink" title="生产者和消费者模式"></a>生产者和消费者模式</h2><p>&#160; &#160; &#160; &#160;生产者和消费者模式是多线程开发中经常见到的一种模式。生产者的线程专门用来生产一些数据，然后存放到一个中间的变量中。消费者再从这个中间的变量中取出数据进行消费。但是因为要使用中间变量，中间变量经常是一些全局变量，因此需要使用锁来保证数据完整性。</p>
+<ul>
+<li>以下是一个使用Lock锁的实现：<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#lock版本</span></span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">wallet = <span class="number">1000</span></span><br><span class="line">lock = threading.Lock()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Producer</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">global</span> wallet</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            money = random.randint(<span class="number">500</span>,<span class="number">1000</span>)</span><br><span class="line">            lock.acquire()</span><br><span class="line">            <span class="comment">#钱包里大于两千元，就停止存入</span></span><br><span class="line">            <span class="keyword">if</span> wallet &gt; <span class="number">2000</span>:</span><br><span class="line">                lock.release()</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                wallet += money</span><br><span class="line">                print(<span class="string">"%s存入%s元钱，还剩%s元钱"</span> % (threading.current_thread(), money, wallet))</span><br><span class="line">                time.sleep(<span class="number">1</span>)</span><br><span class="line">            lock.release()</span><br><span class="line">            time.sleep(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consumer</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">global</span> wallet</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            money = random.randint(<span class="number">100</span>,<span class="number">500</span>)</span><br><span class="line">            lock.acquire()</span><br><span class="line">            <span class="comment">#钱包里钱不够取了，就停止取钱</span></span><br><span class="line">            <span class="keyword">if</span> wallet &lt; money:</span><br><span class="line">                print(<span class="string">"%s取出%s元钱，还剩%s元钱，余额不足"</span> % (threading.current_thread(), money, wallet))</span><br><span class="line">                lock.release()</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">else</span>:               </span><br><span class="line">                wallet -= money</span><br><span class="line">                print(<span class="string">"%s取出%s元钱，还剩%s元钱"</span> % (threading.current_thread(), money, wallet))</span><br><span class="line">                time.sleep(<span class="number">1</span>)</span><br><span class="line">            lock.release()            </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">        Consumer(name=<span class="string">'消费者线程%d'</span>%x).start()</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        Producer(name=<span class="string">'生产者线程%d'</span>%x).start()            </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>&#160; &#160; &#160; &#160;虽然lock版本的生产者消费者模式能正常运行，但是这种方式存在一种弊端，一直使用while True死循环上锁判断钱都不够的方法是很耗费cpu资源的一种行为，还有一种更好的方式便是使用threading.Condition来实现。<br>&#160; &#160; &#160; &#160;threading.Condition可以在没有数据的时候处于阻塞等待状态。一旦有合适的数据了，还可以使用notify相关的函数来通知其他处于等待状态的线程。这样就可以不用做一些无用的上锁和解锁的操作。可以提高程序的性能。首先对threading.Condition相关的函数做个介绍，threading.Condition类似threading.Lock，可以在修改全局数据的时候进行上锁，也可以在修改完毕后进行解锁。</p>
+<ul>
+<li><p>condition的方法介绍：</p>
+<ul>
+<li>acquire：上锁。</li>
+<li>release：解锁。</li>
+<li>wait：将当前线程处于等待状态，并且会释放锁。可以被其他线程使用notify和notify_all函数唤醒。被唤醒后会继续等待上锁，上锁后继续执行下面的代码。</li>
+<li>notify：通知某个正在等待的线程，默认是第1个等待的线程。</li>
+<li>notify_all：通知所有正在等待的线程。notify和notify_all不会释放锁。并且需要在release之前调用。</li>
+</ul>
+</li>
+<li><p>以下是使用condition的实现：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#condition版本</span></span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">wallet = <span class="number">1000</span></span><br><span class="line">con = threading.Condition()</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Producer</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">global</span> wallet</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            money = random.randint(<span class="number">500</span>,<span class="number">1000</span>)</span><br><span class="line">            con.acquire()</span><br><span class="line">            <span class="comment">#钱包里大于两千元，就暂停存入</span></span><br><span class="line">            <span class="keyword">if</span> wallet &gt; <span class="number">2000</span>:</span><br><span class="line">                con.wait()</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                wallet += money</span><br><span class="line">                print(<span class="string">"%s存入%s元钱，还剩%s元钱"</span> % (threading.current_thread(), money, wallet))</span><br><span class="line">                time.sleep(<span class="number">1</span>)</span><br><span class="line">                con.notify()</span><br><span class="line">            con.release()</span><br><span class="line">            time.sleep(<span class="number">2</span>)</span><br><span class="line">    </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consumer</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">global</span> wallet</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            money = random.randint(<span class="number">100</span>,<span class="number">500</span>)</span><br><span class="line">            con.acquire()</span><br><span class="line">            <span class="comment">#钱包里钱不够取了，就暂停取钱</span></span><br><span class="line">            <span class="keyword">if</span> wallet &lt; money:</span><br><span class="line">                print(<span class="string">"%s取出%s元钱，还剩%s元钱，余额不足"</span> % (threading.current_thread(), money, wallet))</span><br><span class="line">                con.wait()</span><br><span class="line">            <span class="keyword">else</span>:               </span><br><span class="line">                wallet -= money</span><br><span class="line">                print(<span class="string">"%s取出%s元钱，还剩%s元钱"</span> % (threading.current_thread(), money, wallet))</span><br><span class="line">                time.sleep(<span class="number">1</span>)</span><br><span class="line">                con.notify()</span><br><span class="line">            con.release()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">        Consumer(name=<span class="string">'消费者线程%d'</span>%x).start()</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>):</span><br><span class="line">        Producer(name=<span class="string">'生产者线程%d'</span>%x).start()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>还需要时间沉淀以下（关于多线程应用于生产者消费者模型的问题）。</p>
+<h2 id="queue线程安全队列"><a href="#queue线程安全队列" class="headerlink" title="queue线程安全队列"></a>queue线程安全队列</h2><p>&#160; &#160; &#160; &#160;在线程中，访问一些全局变量，加锁是一个经常的过程。如果你是想把一些数据存储到某个队列中，那么Python内置了一个线程安全的模块叫做queue模块。Python中的queue模块中提供了同步的、线程安全的队列类，包括FIFO（先进先出）队列Queue，LIFO（后入先出）队列LifoQueue。这些队列都实现了锁原语（可以理解为原子操作，即要么不做，要么都做完），能够在多线程中直接使用。可以使用队列来实现线程间的同步。相关的函数如下：<br>queue模块有三种队列及构造函数</p>
+</blockquote>
+<ul>
+<li><p>Python queue模块的FIFO队列先进先出。 queue.Queue(maxsize)</p>
+</li>
+<li><p>LIFO类似于堆，即先进后出。 queue.LifoQueue(maxsize)</p>
+</li>
+<li>优先级队列级别越低越先出来。 queue.PriorityQueue(maxsize)<br>queue模块中的常用方法:</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>queue.qsize()</td>
+<td>返回队列的大小</td>
+</tr>
+<tr>
+<td>queue.empty()</td>
+<td>如果队列为空，返回True，反之False</td>
+</tr>
+<tr>
+<td>queue.full()</td>
+<td>如果队列满了，返回True，反之False (queue.full 与 maxsize 大小对应)</td>
+</tr>
+<tr>
+<td>queue.get([block[, timeout]])</td>
+<td>获取队列，立即取出<strong>一个元素</strong>， timeout-超时时间</td>
+</tr>
+<tr>
+<td>queue.put(item[, timeout]])</td>
+<td>写入队列，立即放入<strong>一个元素</strong>， timeout-超时时间</td>
+</tr>
+<tr>
+<td>queue.join()</td>
+<td>阻塞调用线程，直到队列中的所有任务被处理掉, 实际上意味着等到队列为空，再执行别的操作</td>
+</tr>
+<tr>
+<td>queue.task_done()</td>
+<td>在完成一项工作之后，queue.task_done()函数向任务已经完成的队列发送一个信号</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>详见：<a href="https://www.cnblogs.com/wl443587/p/9911721.html" target="_blank" rel="noopener">https://www.cnblogs.com/wl443587/p/9911721.html</a></p>
+<hr>
+<h2 id="一个多线程的面试题"><a href="#一个多线程的面试题" class="headerlink" title="一个多线程的面试题"></a>一个多线程的面试题</h2><p>&#160; &#160; &#160; &#160;创建两个线程，其中一个输出1-52，另外一个输出A-Z。输出格式要求：12A 34B 56C 78D。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 大致思路</span></span><br><span class="line"><span class="comment"># 获取对方的锁，运行一次后，释放自己的锁</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show1</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">52</span>, <span class="number">2</span>):</span><br><span class="line">        lock_show2.acquire()</span><br><span class="line">        print(i, end=<span class="string">''</span>)</span><br><span class="line">        print(i+<span class="number">1</span>, end=<span class="string">''</span>)</span><br><span class="line">        time.sleep(<span class="number">0.2</span>)</span><br><span class="line">        lock_show1.release()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show2</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">26</span>):</span><br><span class="line">        lock_show1.acquire()</span><br><span class="line">        print(chr(i + ord(<span class="string">'A'</span>)))</span><br><span class="line">        time.sleep(<span class="number">0.2</span>)</span><br><span class="line">        lock_show2.release()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">lock_show1 = threading.Lock()</span><br><span class="line">lock_show2 = threading.Lock()</span><br><span class="line"></span><br><span class="line">show1_thread = threading.Thread(target=show1)</span><br><span class="line">show2_thread = threading.Thread(target=show2)</span><br><span class="line"></span><br><span class="line">lock_show1.acquire()  <span class="comment"># 因为线程执行顺序是无序的，保证show1()先执行</span></span><br><span class="line"></span><br><span class="line">show1_thread.start()</span><br><span class="line">show2_thread.start()</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>多线程</tag>
+        <tag>多进程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用Charles抓包安卓模拟器（MuMu）</title>
+    <url>/2019/12/30/tools-charles/</url>
+    <content><![CDATA[<blockquote>
+<p>&#160; &#160; &#160; &#160;在进行app、小程序爬虫的时候，由于app没有浏览器这种可以直观看到后台请求的工具，所以要想获取该请求，往往是通过一些抓包软件抓取数据。<br>&#160; &#160; &#160; &#160;<a href="https://www.charlesproxy.com/" target="_blank" rel="noopener">Charles</a>就是一个网络抓包工具，相比Fiddler，其功能更加强大，并且跨平台的支持更好。所以移动端的抓包工具主要使用Charles。它支持SSL握手，可以自动根据根证书生成一个签名的服务器证书，并且它的官网为我们提供了一个根证书。<br>&#160; &#160; &#160; &#160;现在https协议运用得越来越广泛，如果一个app应用了https，那Charles所抓到的包只能显示乱码，所以需要在Charles上配置相关SSL证书。<br><a id="more"></a></p>
+</blockquote>
+<p>整个配置大概分为以下几个步骤：<br>&#160; &#160; &#160; &#160;1. 在PC上下载Charles。<br>&#160; &#160; &#160; &#160;2. PC端配置，在客户端安装好这个根证书，然后让我们的操作系统信任它。<br>&#160; &#160; &#160; &#160;3. 移动端配置，在IOS或Android上指定Charles为它的代理服务器，并装上这个官网提供的根证书。</p>
+<p>&#160; &#160; &#160; &#160;<em>本人使用的是Windows+MuMu模拟器。</em></p>
+<h3 id="下载Charles"><a href="#下载Charles" class="headerlink" title="下载Charles"></a>下载Charles</h3><p>&#160; &#160; &#160; &#160;官网上可以发现<a href="https://www.charlesproxy.com/" target="_blank" rel="noopener">Charles</a>支持Windows、Mac、Linux三个平台，我们只需选择对应的下载即可，这里不再赘述。</p>
+<h3 id="PC端配置"><a href="#PC端配置" class="headerlink" title="PC端配置"></a>PC端配置</h3><ul>
+<li>证书配置</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2020/01/03/lUePOS.png" alt></p>
+<p><img src="https://s2.ax1x.com/2020/01/03/lUe9Qf.png" alt><br>点击安装证书。<br><img src="https://s2.ax1x.com/2020/01/03/lUeFeg.png" alt><br><img src="https://s2.ax1x.com/2020/01/03/lUeCy8.jpg" alt></p>
+<p><img src="https://s2.ax1x.com/2020/01/03/lUepSP.png" alt><br>&#160; &#160; &#160; &#160;默认端口是8888，也可以自行设置。</p>
+<p>&#160; &#160; &#160; &#160;到这，PC端证书配置就完成了。</p>
+<h3 id="移动端配置"><a href="#移动端配置" class="headerlink" title="移动端配置"></a>移动端配置</h3><p><img src="https://s2.ax1x.com/2020/01/03/lUekwQ.png" alt></p>
+<p><img src="https://s2.ax1x.com/2020/01/03/lUeAoj.jpg" alt></p>
+<p>&#160; &#160; &#160; &#160;代理服务器主机名设置成PC的IP地址，可用cmd ipconfig查看。<br>&#160; &#160; &#160; &#160;然后在浏览器中打开：chls.pro/ssl<br>&#160; &#160; &#160; &#160;模拟器中会下载一个包含CA证书的数据文件，完成后打开，显示如下。</p>
+<p><img src="https://s2.ax1x.com/2020/01/03/lUeZYn.png" alt></p>
+<p>&#160; &#160; &#160; &#160;在证书名称中输入charles后确定即可。</p>
+<p><strong><em>现在就可以在Charles中抓到模拟器中的https包啦。</em></strong></p>
+]]></content>
+      <categories>
+        <category>工具配置</category>
+      </categories>
+      <tags>
+        <tag>工具配置</tag>
+        <tag>charles</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hashlib模块使用</title>
+    <url>/2019/12/29/python-hashlib/</url>
+    <content><![CDATA[<blockquote>
+<p>&#160; &#160; &#160; &#160;md5在爬虫队列去重、接口加密方面都能用到，是比较基础和常见的摘要算法，本文记录:<br>1、基本概念&#160; &#160;2、hashlib模块的使用&#160; &#160;3、hmac模块的使用<br><a id="more"></a></p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>&#160; &#160; &#160; &#160;Python的hashlib提供了常见的摘要算法，主要提供 如MD5，SHA1, SHA224, SHA256, SHA384, SHA512 算法等。<br>&#160; &#160; &#160; &#160;摘要算法又称哈希算法、散列算法。它通过一个函数，把任意长度的数据转换为一个长度固定的数据串（通常用16进制的字符串表示）。</p>
+</blockquote>
+<h3 id="如何产生hash值"><a href="#如何产生hash值" class="headerlink" title="如何产生hash值"></a>如何产生hash值</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line">md5 = hashlib.md5()</span><br><span class="line">md5.update(<span class="string">'this is md5'</span>.encode(<span class="string">'utf-8'</span>))</span><br><span class="line">print(md5.digest())  <span class="comment">#digest:摘要（二进制）</span></span><br><span class="line">print(md5.hexdigest()) <span class="comment">#hex:十六进制</span></span><br><span class="line">print(md5.)</span><br></pre></td></tr></table></figure>
+<p>输出： </p>
+<p><img src="/2019/12/29/python-hashlib/1.png" alt><br>注意：</p>
+<ul>
+<li>md5可以替换为其他算法，不同算法得到的长度是不同的。</li>
+<li>无论传入多大文本，同一种算法得到的长度都是相同的。</li>
+<li><code>md5 = hashlib.md5()</code>括号内也可以传值</li>
+<li>文本过大可以使用<code>md5.update()</code>多次传值，其结果与一次传值是一样的。</li>
+</ul>
+<h3 id="hmac模块"><a href="#hmac模块" class="headerlink" title="hmac模块"></a>hmac模块</h3><p>&#160; &#160; &#160; &#160;使用hmac模块时，若要使用update()，初始值必须一致，否则结果会不同。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> hmac</span><br><span class="line">h1=hmac.new(<span class="string">b'tom'</span>)          <span class="comment">#初始值必须保证一致，最终得到的结果就会不一样</span></span><br><span class="line">h1.update(<span class="string">b'hello'</span>)</span><br><span class="line">h1.update(<span class="string">b'world'</span>)</span><br><span class="line">print(h1.hexdigest())</span><br><span class="line"></span><br><span class="line">h2=hmac.new(<span class="string">b'tom'</span>)         <span class="comment">#初始值必须保证一致，最终得到的结果就会不一样</span></span><br><span class="line">h2.update(<span class="string">b'helloworld'</span>)</span><br><span class="line">print(h2.hexdigest())</span><br><span class="line"></span><br><span class="line">h3=hmac.new(<span class="string">b'tomhelloworld'</span>)   <span class="comment">#初始值不一样，所以与上面两种的结果不一样</span></span><br><span class="line">print(h3.hexdigest())</span><br></pre></td></tr></table></figure><br>输出：</p>
+<p><img src="/2019/12/29/python-hashlib/1.png" alt></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>hashlib</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux上使用crontab命令完成定时scrapy爬虫</title>
     <url>/2019/12/28/linux-crontab/</url>
     <content><![CDATA[<blockquote>
 <p>&#160; &#160; &#160; &#160;使用scrapy的时候，有时候不想每次都手动敲命令行，就可以使用crontab配置scrapy定时任务在后台运行，这样不用人工干预，每个周期都可以定时自动执行啦。本文主要介绍两方面：<br>&#160;&#160;1、crontab的用法 &#160;2、使用crontab配置scrapy定时任务。</p>
 </blockquote>
 <a id="more"></a>
-
-<h1 id="一、crontab"><a href="#一、crontab" class="headerlink" title="一、crontab"></a>一、crontab</h1><ul>
-<li><p><strong>crontab是什么</strong><br>&#160; &#160; &#160; &#160;crontab 是 Linux 的一个计划任务管理工具，你可以在那上面添加一些任务，在指定的时间让它在后台运行，经常用来定时清除系统或程序的缓存，可以定时执行任意的脚本等等，这些功能在 Linux 上都是非常有用的，尤其是当 Linux 做为服务器来用时。</p>
-</li>
-<li><p><strong>crontab常用命令</strong></p>
+<h1 id="一、crontab"><a href="#一、crontab" class="headerlink" title="一、crontab"></a>一、crontab</h1><h2 id="crontab是什么"><a href="#crontab是什么" class="headerlink" title="crontab是什么"></a><strong>crontab是什么</strong></h2><p>&#160; &#160; &#160; &#160;crontab 是 Linux 的一个计划任务管理工具，你可以在那上面添加一些任务，在指定的时间让它在后台运行，经常用来定时清除系统或程序的缓存，可以定时执行任意的脚本等等，这些功能在 Linux 上都是非常有用的，尤其是当 Linux 做为服务器来用时。</p>
+<h2 id="crontab常用命令"><a href="#crontab常用命令" class="headerlink" title="crontab常用命令"></a><strong>crontab常用命令</strong></h2><div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">命令</th>
-<th align="left">解释</th>
+<th style="text-align:center">命令</th>
+<th style="text-align:left">解释</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">crontab -l</td>
-<td align="left">列出当前的定时任务列表</td>
+<tbody>
+<tr>
+<td style="text-align:center">crontab -l</td>
+<td style="text-align:left">列出当前的定时任务列表</td>
 </tr>
 <tr>
-<td align="center">crontab -e</td>
-<td align="left">执行编辑器来设定时任务</td>
+<td style="text-align:center">crontab -e</td>
+<td style="text-align:left">执行编辑器来设定时任务</td>
 </tr>
-</tbody></table>
-</li>
-<li><p><strong>定时任务设置格式</strong><br>&#160; &#160; &#160; &#160;格式：[分]  [时]  [日]  [月]  [周] [执行的操作]<br>例：<br><code>00 19 * * * python /root/spider/test.py</code><br>每天19:00执行python /root/spider/test.py  <strong>(注意一定要是绝对路径)</strong></p>
-</li>
-</ul>
-<p><img src="/2019/12/28/linux-crontab/1.png" alt></p>
-<h4 id="常用符号："><a href="#常用符号：" class="headerlink" title="常用符号："></a>常用符号：</h4><ul>
+</tbody>
+</table>
+</div>
+<h2 id="定时任务设置格式"><a href="#定时任务设置格式" class="headerlink" title="定时任务设置格式"></a><strong>定时任务设置格式</strong></h2><p>&#160; &#160; &#160; &#160;格式：[分]  [时]  [日]  [月]  [周] [执行的操作]<br>例：<br><code>00 19 * * * python /root/spider/test.py</code><br>每天19:00执行python /root/spider/test.py  <strong>(注意一定要是绝对路径)</strong></p>
+<p><img src="/2019/12/28/linux-crontab/1.png" alt><br><strong>常用符号</strong> ：</p>
+<ul>
 <li><p>星号（*）：代表所有可能的值，如month字段为星号，则表示在满足其它字段的制约条件后每月都执行该命令操作。</p>
 </li>
 <li><p>逗号（,）：可以用逗号隔开的值指定一个列表范围，例如，“1,2,5,7,8,9”</p>
@@ -52,16 +664,11 @@
 <p>&#160; &#160; &#160; &#160;6、每隔两天的上午8点到11点的第3和第15分钟执行：<code>3,15 8-11 */2 * * command</code></p>
 <h1 id="二、crontab与scrapy的结合"><a href="#二、crontab与scrapy的结合" class="headerlink" title="二、crontab与scrapy的结合"></a>二、crontab与scrapy的结合</h1><p>&#160; &#160; &#160; &#160;通常运行scrapy需要进入到该scrapy项目的文件夹下，所以我们不能直接<code>scrapy crawl 项目</code>。</p>
 <p>例如我需要每天19:00运行我部署的某天气网站的scrapy爬虫，名为chinaweather：</p>
-<p>&#160; &#160; &#160; &#160;1、我们需要先 <code>cd</code> 进入到该scrapy项目的根目录下</p>
+<h2 id="操作如下"><a href="#操作如下" class="headerlink" title="操作如下"></a>操作如下</h2><p>&#160; &#160; &#160; &#160;1、我们需要先 <code>cd</code> 进入到该scrapy项目的根目录下</p>
 <p>&#160; &#160; &#160; &#160;2、scrapy命令需要使用绝对路径，如果找不到，可以在命令行输入<code>which scrapy</code>找到。如：/usr/local/anaconda/bin/scrapy</p>
-<p>&#160; &#160; &#160; &#160;3、这个scrapy运行的时候会打印一些日志，我们用<code>&gt;&gt;</code>可以把它统一追加到一个文件中，方便检查scrapy是否正常运行。 （需要注意的是<code>&gt;</code>是覆盖重写，<code>&gt;&gt;</code>是追加操作）<br>&#160; &#160; &#160; &#160;使用crontab -e 编辑后:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">00 19 * * * cd &#x2F;root&#x2F;spider&#x2F;weather &amp;&amp; &#x2F;usr&#x2F;local&#x2F;anaconda&#x2F;bin&#x2F;scrapy crawl chinaweather &gt;&gt; &#x2F;root&#x2F;spider&#x2F;weather&#x2F;weather_history.log</span><br></pre></td></tr></table></figure>
-
+<p>&#160; &#160; &#160; &#160;3、这个scrapy运行的时候会打印一些日志，我们用<code>&gt;&gt;</code>可以把它统一追加到一个文件中，方便检查scrapy是否正常运行。 （需要注意的是<code>&gt;</code>是覆盖重写，<code>&gt;&gt;</code>是追加操作）<br>&#160; &#160; &#160; &#160;使用crontab -e 编辑后:<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">00 19 * * * cd &#x2F;root&#x2F;spider&#x2F;weather &amp;&amp; &#x2F;usr&#x2F;local&#x2F;anaconda&#x2F;bin&#x2F;scrapy crawl chinaweather &gt;&gt; &#x2F;root&#x2F;spider&#x2F;weather&#x2F;weather_history.log</span><br></pre></td></tr></table></figure></p>
 <p>&#160; &#160; &#160; &#160;即可添加到定时任务，最后保存退出，就会显示任命了新的定时任务：</p>
 <p><img src="/2019/12/28/linux-crontab/2.png" alt></p>
-<blockquote>
-<p>本文作者： otavio.LXH<br>本文链接：<a href="https://lxherman.github.io/2019/12/28/linux-crontab" target="_blank" rel="noopener">https://lxherman.github.io/2019/12/28/linux-crontab</a><br>转载请注明出处！</p>
-</blockquote>
 ]]></content>
       <categories>
         <category>linux</category>
@@ -72,22 +679,239 @@
       </tags>
   </entry>
   <entry>
+    <title>http协议的幂等性问题</title>
+    <url>/2019/12/27/http-idempotence/</url>
+    <content><![CDATA[<blockquote>
+<p>关于http协议4种主要方法的幂等性问题<br><a id="more"></a></p>
+</blockquote>
+<p>首先理解一下幂等性：<br><strong>幂等</strong><br>&#160; &#160; &#160; &#160;对于同一种行为，如果执行不论多少次，最终的结果都是一致相同的，就称这种行为是幂等的。</p>
+<p><strong>非幂等</strong><br>&#160; &#160; &#160; &#160;对于同一种行为，如果最终的结果与执行的次数有关，每次执行后结果都不相同，就称这种行为为非幂等。</p>
+<hr>
+<p>&#160; &#160; &#160; &#160;下面就结合HTTP   <strong>GET、DELETE、PUT、POST</strong>来介绍下这四种主要方法的语义和幂等性。</p>
+<h2 id="HTTP-GET"><a href="#HTTP-GET" class="headerlink" title="HTTP GET"></a>HTTP GET</h2><p><strong>HTTP GET方法用于获取资源，不应有副作用，所以是幂等的。</strong><br>&#160; &#160; &#160; &#160;例如：<code>GET  http://www.*****.com/article/123</code>，不会改变资源的状态，所以无论获取多少次，都是没有副作用的。需要注意的是，没有副作用并不代表返回的结果相同，例如<code>GET  http://www.*****.com/latest-article</code>，返回最新文章，虽然其返回的内容可能是不同的，但是没有对资源产生副作用，所以GET方法是幂等的。</p>
+<h2 id="HTTP-DELETE"><a href="#HTTP-DELETE" class="headerlink" title="HTTP DELETE"></a>HTTP DELETE</h2><p><strong>HTTP DELETE方法用于删除资源，有副作用，但它应该满足幂等性。</strong><br>&#160; &#160; &#160; &#160;例如：<code>DELETE  http://www.*****.com/article/123</code>，调用多少次，对系统产生的副作用都是相同的，即是删除ID为123的文章，其对应的是删除资源本身，无论调用多少次或刷新页面，不必担心引起错误，它是满足幂等性的。</p>
+<p>比较容易混淆的是PUT和POST：<br>&#160; &#160; &#160; &#160;POST和PUT的区别容易被简单地误认为“POST表示创建资源，PUT表示更新资源”；而实际上，二者<strong>均可用于创建资源</strong>，更为本质的差别是在幂等性方面。</p>
+<h2 id="HTTP-POST"><a href="#HTTP-POST" class="headerlink" title="HTTP POST"></a>HTTP POST</h2><p><strong>HTTP POST所对应的URI并非创建的资源本身，而是资源的接收者，所以它不是幂等的。</strong><br><div class="note default">
+            <p>&#160; &#160; &#160; &#160;例如：<code>POST http://www.*****.com/article</code>的语义是在<a href="http://www.*****.com/article下创建一篇文章，HTTP响应中应包含文章的创建状态以及文章的URI。两次相同的POST请求会在服务器端创建两份资源，它们具有不同的URI；所以，POST方法不具备幂等性。" target="_blank" rel="noopener">http://www.*****.com/article下创建一篇文章，HTTP响应中应包含文章的创建状态以及文章的URI。两次相同的POST请求会在服务器端创建两份资源，它们具有不同的URI；所以，POST方法不具备幂等性。</a></p>
+          </div></p>
+<h2 id="HTTP-PUT"><a href="#HTTP-PUT" class="headerlink" title="HTTP PUT"></a>HTTP PUT</h2><p><strong>HTTP PUT所对应的URI是要创建或更新的资源本身，所以它是幂等的。</strong><br>&#160; &#160; &#160; &#160;例如：<code>PUT http://www.*****.com/article/123</code>的语义是创建或更新ID为123的文章。对同一URI进行多次PUT的副作用和一次PUT是相同的；因此，PUT方法具有幂等性。</p>
+<p>参考:<a href="https://blog.csdn.net/bieleyang/article/details/76272699" target="_blank" rel="noopener">https://blog.csdn.net/bieleyang/article/details/76272699</a></p>
+]]></content>
+      <tags>
+        <tag>http</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>反爬必修课之----(4)点触验证码识别</title>
+    <url>/2019/08/15/captcha-click/</url>
+    <content><![CDATA[<blockquote>
+<p>&#160; &#160; &#160; &#160;验证码识别成为了对抗反爬虫的必修课之一，看了崔庆才著的《python3网络爬虫开发实战》后受益匪浅，本专题将着重学习记录不同的验证码识别方式：图像验证码、宫格验证码、极验滑动验证码、点触验证码。<br><a id="more"></a></p>
+<hr>
+<p>s</p>
+<h2 id="点触验证码识别"><a href="#点触验证码识别" class="headerlink" title="点触验证码识别"></a><center>点触验证码识别</center></h2></blockquote>
+<p>先看看效果：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/16325133-4f30f869602c7514.gif?imageMogr2/auto-orient/strip" alt="点触.gif"></p>
+<p>下图为12306的点触验证码，识别难点有两个:</p>
+<ol>
+<li><p>文字识别，即首先要识别出“盘子”二字，但往往该文字经过了一系列的变换，如果借助第一节提到的OCR技术，基本上无法识别。</p>
+</li>
+<li><p>将图片转化为相应的文字。</p>
+</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/16325133-76722036277145e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>另一种验证码：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/16325133-6830ff513c192548.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>（ 和上述验证码相比较而言，会简单一些，但是识别思路相同，本文就着重记录一下第一种验证码的识别过程。）</p>
+<h3 id="识别思路"><a href="#识别思路" class="headerlink" title="识别思路"></a>识别思路</h3><p>&#160; &#160; &#160; &#160;点触验证码难度较大，我们可以接触互联网上一些验证码服务平台，他们提供7×24小时的服务，并且识别准确率在90%以上。<br>&#160; &#160; &#160; &#160;大致流程是将验证码图片按照字节流的形式传递给服务平台，平台几秒钟后将会返回一个带有坐标信息的字段，该坐标信息就是我们需要点击的位置。按照得到的坐标信息进行点击，便可以完成识别。<br>&#160; &#160; &#160; &#160;验证码服务平台往往提供了多种类型的验证码识别，例如“超级鹰”网址：<a href="https://www.chaojiying.com/，其提供了数字、中英文、特殊字符、数学计算和坐标选择识别等多种验证码类型的识别。点触验证码识别就是坐标选择识别的一种。下面将利用该平台进行识别。" target="_blank" rel="noopener">https://www.chaojiying.com/，其提供了数字、中英文、特殊字符、数学计算和坐标选择识别等多种验证码类型的识别。点触验证码识别就是坐标选择识别的一种。下面将利用该平台进行识别。</a></p>
+<h3 id="详细过程及代码"><a href="#详细过程及代码" class="headerlink" title="详细过程及代码"></a>详细过程及代码</h3><h4 id="获取超级鹰python-API"><a href="#获取超级鹰python-API" class="headerlink" title="获取超级鹰python API"></a>获取超级鹰python API</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> md5</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chaojiying_Client</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, username, password, soft_id)</span>:</span></span><br><span class="line">        self.username = username</span><br><span class="line">        self.password = md5(password.encode(<span class="string">'utf-8'</span>)).hexdigest()</span><br><span class="line">        self.soft_id = soft_id</span><br><span class="line">        self.base_params = &#123;</span><br><span class="line">            <span class="string">'user'</span>: self.username,</span><br><span class="line">            <span class="string">'pass2'</span>: self.password,</span><br><span class="line">            <span class="string">'softid'</span>: self.soft_id,</span><br><span class="line">        &#125;</span><br><span class="line">        self.headers = &#123;</span><br><span class="line">            <span class="string">'Connection'</span>: <span class="string">'Keep-Alive'</span>,</span><br><span class="line">            <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)'</span>,</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">PostPic</span><span class="params">(self, im, codetype)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        im: 图片字节</span></span><br><span class="line"><span class="string">        codetype: 题目类型 参考 http://www.chaojiying.com/price.html</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        params = &#123;</span><br><span class="line">            <span class="string">'codetype'</span>: codetype,</span><br><span class="line">        &#125;</span><br><span class="line">        params.update(self.base_params)</span><br><span class="line">        files = &#123;<span class="string">'userfile'</span>: (<span class="string">'ccc.jpg'</span>, im)&#125;</span><br><span class="line">        r = requests.post(<span class="string">'http://upload.chaojiying.net/Upload/Processing.php'</span>, data=params, files=files, headers=self.headers)</span><br><span class="line">        <span class="keyword">return</span> r.json()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ReportError</span><span class="params">(self, im_id)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        im_id:报错题目的图片ID</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        params = &#123;</span><br><span class="line">            <span class="string">'id'</span>: im_id,</span><br><span class="line">        &#125;</span><br><span class="line">        params.update(self.base_params)</span><br><span class="line">        r = requests.post(<span class="string">'http://upload.chaojiying.net/Upload/ReportError.php'</span>, data=params, headers=self.headers)</span><br><span class="line">        <span class="keyword">return</span> r.json()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">	chaojiying = Chaojiying_Client(<span class="string">'超级鹰用户名'</span>, <span class="string">'超级鹰用户名的密码'</span>, <span class="string">'96001'</span>)	<span class="comment">#用户中心&gt;&gt;软件ID 生成一个替换 96001</span></span><br><span class="line">	im = open(<span class="string">'a.jpg'</span>, <span class="string">'rb'</span>).read()											<span class="comment">#本地图片文件路径 来替换 a.jpg 有时WIN系统须要//</span></span><br><span class="line">	print(chaojiying.PostPic(im, <span class="number">1902</span>))										<span class="comment">#1902 验证码类型  官方网站&gt;&gt;价格体系 3.4+版 print 后要加()</span></span><br></pre></td></tr></table></figure>
+<p>&#160; &#160; &#160; &#160;代码如上，其定义了一个Chaojiying_Client的类，内有三个参数，分别是超级鹰的用户名、密码、软件ID。内含两个函数 PostPic()、ReportError()。</p>
+<p>&#160; &#160; &#160; &#160;<em>PostPic()需要传入图片对象和验证码的代号（验证码类型）。该方法会将图片对象发送给给超级鹰的后台进行识别，然后返回一个JSON。</em></p>
+<p>&#160; &#160; &#160; &#160;<em>ReportError()发生错误时的回调。</em></p>
+<h4 id="验证过程"><a href="#验证过程" class="headerlink" title="验证过程"></a>验证过程</h4><h5 id="初始化、登录"><a href="#初始化、登录" class="headerlink" title="初始化、登录"></a>初始化、登录</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> ActionChains</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support.ui <span class="keyword">import</span> WebDriverWait</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC</span><br><span class="line"><span class="keyword">from</span> chaojiying <span class="keyword">import</span> Chaojiying_Client</span><br><span class="line"><span class="comment">#账号密码自行设定</span></span><br><span class="line">EMAIL = <span class="string">'12306账号'</span></span><br><span class="line">PASSWORD = <span class="string">'12306密码'</span></span><br><span class="line">CHAOJIYING_USERNAME = <span class="string">'超级鹰账号'</span></span><br><span class="line">CHAOJIYING_PASSWORD = <span class="string">'超级鹰密码'</span></span><br><span class="line"></span><br><span class="line">CHAOJIYING_SOFT_ID = <span class="number">898443</span></span><br><span class="line">CHAOJIYING_KIND = <span class="number">9202</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Crackclick</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.url = <span class="string">'https://kyfw.12306.cn/otn/resources/login.html'</span></span><br><span class="line">        self.browser = webdriver.Chrome()</span><br><span class="line">        self.wait = WebDriverWait(self.browser,<span class="number">20</span>)</span><br><span class="line">        self.email = EMAIL</span><br><span class="line">        self.password = PASSWORD</span><br><span class="line">        self.chaojiying = Chaojiying_Client(CHAOJIYING_USERNAME,CHAOJIYING_PASSWORD,CHAOJIYING_SOFT_ID)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">open</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        打开网页,切换验证模式</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        self.browser.get(self.url)</span><br><span class="line">        account = self.wait.until(EC.element_to_be_clickable((By.CLASS_NAME,<span class="string">'login-hd-account'</span>)))</span><br><span class="line">        account.click()</span><br><span class="line">        email = self.wait.until(EC.presence_of_element_located((By.ID,<span class="string">'J-userName'</span>)))</span><br><span class="line">        password = self.wait.until(EC.presence_of_element_located((By.ID,<span class="string">'J-password'</span>)))</span><br><span class="line">        email.send_keys(self.email)</span><br><span class="line">        password.send_keys(self.password)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">refresh_code</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        刷新验证码</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        button = self.wait.until(EC.element_to_be_clickable((By.CLASS_NAME,<span class="string">'lgcode-refresh'</span>)))</span><br><span class="line">        <span class="keyword">return</span> button</span><br></pre></td></tr></table></figure>
+<h5 id="获取验证码图片"><a href="#获取验证码图片" class="headerlink" title="获取验证码图片"></a>获取验证码图片</h5><p>&#160; &#160; &#160; &#160;<strong>该截图操作在各类验证码识别中会经常使用</strong><br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_element</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="string">'''获取验证图片对象'''</span></span><br><span class="line">    element = self.wait.until(EC.presence_of_element_located((By.CLASS_NAME,<span class="string">'loginImg'</span>)))</span><br><span class="line">    <span class="keyword">return</span> element</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_position</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="string">'''获取验证码位置'''</span></span><br><span class="line">    element = self.get_element()</span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    location = element.location</span><br><span class="line">    size = element.size</span><br><span class="line">    top,bottom,left,right = location[<span class="string">'y'</span>],location[<span class="string">'y'</span>]+size[<span class="string">'height'</span>],location[<span class="string">'x'</span>],location[<span class="string">'x'</span>]+size[<span class="string">'width'</span>]</span><br><span class="line">    <span class="keyword">return</span> (top,bottom,left,right)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_screenshot</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="string">'''获取网页截图'''</span></span><br><span class="line">    screenshot = self.browser.get_screenshot_as_png()</span><br><span class="line">    screenshot = Image.open(BytesIO(screenshot))</span><br><span class="line">    <span class="keyword">return</span> screenshot</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_image</span><span class="params">(self,name=<span class="string">'captcha.png'</span>)</span>:</span></span><br><span class="line">    <span class="string">'''获取验证码图片'''</span></span><br><span class="line">    top,bottom,left,right = self.get_position()</span><br><span class="line">    print(<span class="string">'验证码位置'</span>,top,bottom,left,right)</span><br><span class="line">    screenshot = self.get_screenshot()</span><br><span class="line">    captcha = screenshot.crop((left,top,right,bottom))</span><br><span class="line">    <span class="keyword">return</span> captcha</span><br></pre></td></tr></table></figure></p>
+<h5 id="解析识别信息"><a href="#解析识别信息" class="headerlink" title="解析识别信息"></a>解析识别信息</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_points</span><span class="params">(self, captcha_result)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    解析识别信息</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    groups = captcha_result.get(<span class="string">'pic_str'</span>).split(<span class="string">'|'</span>)</span><br><span class="line">    locations = [[int(number) <span class="keyword">for</span> number <span class="keyword">in</span> group.split(<span class="string">','</span>)] <span class="keyword">for</span> group <span class="keyword">in</span> groups]</span><br><span class="line">    <span class="keyword">return</span> locations</span><br></pre></td></tr></table></figure>
+<p>平台返回的JSON格式信息如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">&#39;err_no&#39;: 0, </span><br><span class="line">&#39;err_str&#39;: &#39;OK&#39;, </span><br><span class="line">&#39;pic_id&#39;: &#39;8056217061965800013&#39;, </span><br><span class="line">&#39;pic_str&#39;: &#39;29,72|257,71&#39;,</span><br><span class="line">&#39;md5&#39;: &#39;8de76ac4036ebab2b1e05375c1bf84b8&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>&#160; &#160; &#160; &#160;get_points()方法即是将’pic_str’中的坐标信息格式化为：<code>[29, 72]   [257, 71]</code></p>
+<h5 id="点击验证图片"><a href="#点击验证图片" class="headerlink" title="点击验证图片"></a>点击验证图片</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">touch_click_words</span><span class="params">(self,locations)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    点击验证码</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="keyword">for</span> location <span class="keyword">in</span> locations:</span><br><span class="line">        print(location)</span><br><span class="line">        ActionChains(self.browser).move_to_element_with_offset(self.get_element(),location[<span class="number">0</span>],</span><br><span class="line">                                                                 location[<span class="number">1</span>]).click().perform()</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>&#160; &#160; &#160; &#160;其中move_to_element_with_offset函数的参数及解释：<br><img src="https://upload-images.jianshu.io/upload_images/16325133-7122e5bae02808db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h5 id="点击登录"><a href="#点击登录" class="headerlink" title="点击登录"></a>点击登录</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    点击登录按钮</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    button = self.wait.until(EC.element_to_be_clickable((By.CLASS_NAME,<span class="string">'login-btn'</span>)))</span><br><span class="line">    button.click()</span><br><span class="line">    time.sleep(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="控制流程"><a href="#控制流程" class="headerlink" title="控制流程"></a>控制流程</h5><p>&#160; &#160; &#160; &#160;首先打开12306网站，并刷新验证码(button)，然后将验证码图片对象按照字节流的格式传递给超级鹰平台，并将返回的locations信息传递给touch_click_words()函数，最后完成验证码识别。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">crack</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''入口'''</span></span><br><span class="line">        self.open()</span><br><span class="line">        button = self.refresh_code()</span><br><span class="line">        button.click()</span><br><span class="line">        image = self.get_image()</span><br><span class="line">        bytes_array = BytesIO()</span><br><span class="line">        image.save(bytes_array,format=<span class="string">'PNG'</span>)</span><br><span class="line">        <span class="comment">#识别验证码</span></span><br><span class="line">        result = self.chaojiying.PostPic(bytes_array.getvalue(),CHAOJIYING_KIND)</span><br><span class="line">        print(result)</span><br><span class="line">        locations = self.get_points(result)</span><br><span class="line">        self.touch_click_words(locations)</span><br><span class="line">        self.login()</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    crack = Crackclick()</span><br><span class="line">    crack.crack()</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="关键字总结"><a href="#关键字总结" class="headerlink" title="关键字总结"></a>关键字总结</h2><ol>
+<li>获取图片位置、截取图片</li>
+<li>调用超级鹰API</li>
+<li>ActionChains</li>
+<li>字节流处理</li>
+</ol>
+]]></content>
+      <categories>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+        <tag>验证码识别</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>反爬必修课之----(3)极验滑动验证码识别</title>
+    <url>/2019/06/01/captcha-sliding/</url>
+    <content><![CDATA[<blockquote>
+<p>&#160; &#160; &#160; &#160;验证码识别成为了对抗反爬虫的必修课之一，看了崔庆才著的《python3网络爬虫开发实战》后受益匪浅，本专题将着重学习记录不同的验证码识别方式：图像验证码、宫格验证码、极验滑动验证码、点触验证码。<br><a id="more"></a></p>
+<hr>
+<p>&#160; &#160; &#160; &#160;[2019.3.6更新] 测试了下发现以下的版本识别率比较低，稍微改动了下代码。<br>&#160; &#160; &#160; &#160;放到了<a href="https://github.com/lxherman/SlidingCaptcha" target="_blank" rel="noopener">GitHub</a>上</p>
+<hr>
+</blockquote>
+<h2 id="极验滑动验证码识别"><a href="#极验滑动验证码识别" class="headerlink" title="极验滑动验证码识别"></a><center>极验滑动验证码识别</center></h2><p>先看看效果：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/16325133-9cc840f151f9b830.gif?imageMogr2/auto-orient/strip" alt></p>
+<h3 id="识别思路"><a href="#识别思路" class="headerlink" title="识别思路"></a>识别思路</h3><ol>
+<li>模拟点击切换为滑动验证、并显示验证界面。</li>
+<li>识别滑动缺口的位置，计算位移</li>
+<li>模拟拖动滑块</li>
+<li>若认证失败，重复调用</li>
+</ol>
+<h3 id="详细过程及代码"><a href="#详细过程及代码" class="headerlink" title="详细过程及代码"></a>详细过程及代码</h3><h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC    </span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support.wait <span class="keyword">import</span> WebDriverWait</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> ActionChains</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">BORDER = <span class="number">6</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CrackGeetest</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.url = <span class="string">'https://www.geetest.com/type/'</span></span><br><span class="line">        self.browser = webdriver.Chrome()</span><br><span class="line">        self.wait = WebDriverWait(self.browser,<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">open</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        打开网页</span></span><br><span class="line"><span class="string">        :return None </span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        self.browser.get(self.url)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">close</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        关闭网页</span></span><br><span class="line"><span class="string">        :return None</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        self.browser.close()</span><br><span class="line">        self.browser.quit()</span><br></pre></td></tr></table></figure>
+<p>&#160; &#160; &#160; &#160;定义了一个 CrackGeetest 类，初始化selenium对象和一些参数配置，网址是极验的验证码测试页面。</p>
+<h4 id="模拟点击"><a href="#模拟点击" class="headerlink" title="模拟点击"></a>模拟点击</h4><p>&#160; &#160; &#160; &#160;首先模拟点击切换为滑动验证，然后模拟点击弹出验证图片。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_to_slide</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    切换为滑动认证</span></span><br><span class="line"><span class="string">    :return 滑动选项对象</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    huadong = self.wait.until(</span><br><span class="line">        EC.element_to_be_clickable((By.CSS_SELECTOR,<span class="string">'.products-content ul &gt; li:nth-child(2)'</span>))</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> huadong</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_geetest_button</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    获取初始认证按钮</span></span><br><span class="line"><span class="string">    :return 按钮对象</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    button = self.wait.until(</span><br><span class="line">        EC.element_to_be_clickable((By.CSS_SELECTOR,<span class="string">'.geetest_radar_tip'</span>))</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> button</span><br></pre></td></tr></table></figure><br>&#160; &#160; &#160; &#160;该步骤定义了两个方法，均利用显示等待的方法实现。并返回按钮对象，后用click()方法模拟点击。<br>效果如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/16325133-9a598c31d166652a.gif?imageMogr2/auto-orient/strip" alt></p>
+<h4 id="获取背景图"><a href="#获取背景图" class="headerlink" title="获取背景图"></a>获取背景图</h4><p>&#160; &#160; &#160; &#160;首先等待验证码加载完成(wait_pic)，获取网页截图(get_screenshot)，然后获取验证背景图所在的位置及大小参数(get_position)和滑块对象(get_slider)。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">wait_pic</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    等待验证图片加载完成</span></span><br><span class="line"><span class="string">    :return None</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    self.wait.until(</span><br><span class="line">        EC.presence_of_element_located((By.CSS_SELECTOR,<span class="string">'.geetest_popup_wrap'</span>))</span><br><span class="line">    ) </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_screenshot</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    获取网页截图</span></span><br><span class="line"><span class="string">    :return: 截图对象</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    screenshot = self.browser.get_screenshot_as_png()</span><br><span class="line">    screenshot = Image.open(BytesIO(screenshot))</span><br><span class="line">    <span class="keyword">return</span> screenshot</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_position</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    获取验证码位置</span></span><br><span class="line"><span class="string">    :return: 位置元组</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    img = self.wait.until(EC.presence_of_element_located((By.CLASS_NAME,<span class="string">'geetest_canvas_img'</span>)))</span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    location = img.location</span><br><span class="line">    size = img.size</span><br><span class="line">    top, bottom = location[<span class="string">'y'</span>], location[<span class="string">'y'</span>] + size[<span class="string">'height'</span>]</span><br><span class="line">    left, right = location[<span class="string">'x'</span>], location[<span class="string">'x'</span>] + size[<span class="string">'width'</span>] </span><br><span class="line">    <span class="keyword">return</span> (top, bottom, left, right) </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_slider</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    获取滑块</span></span><br><span class="line"><span class="string">    :return: 滑块对象</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    slider = self.wait.until(EC.element_to_be_clickable((By.CLASS_NAME,<span class="string">'geetest_slider_button'</span>)))</span><br><span class="line">    <span class="keyword">return</span> slider</span><br></pre></td></tr></table></figure><br>&#160; &#160; &#160; &#160;再通过上述返回的背景图位置和大小参数，对网页截图进行切片(get_geetest_image)，最后获取背景图。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_geetest_image</span><span class="params">(self,name=<span class="string">'captcha.png'</span>)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    获取验证码图片</span></span><br><span class="line"><span class="string">    :return: 图片对象</span></span><br><span class="line"><span class="string">    '''</span>      </span><br><span class="line">    top, bottom, left, right = self.get_position()</span><br><span class="line">    print(<span class="string">'验证码位置'</span>,top, bottom, left, right)</span><br><span class="line">    screenshot = self.get_screenshot()</span><br><span class="line">    captcha = screenshot.crop((left, top, right, bottom))</span><br><span class="line">    captcha.save(name)</span><br><span class="line">    <span class="keyword">return</span> captcha</span><br></pre></td></tr></table></figure><br> &#160; &#160; &#160; &#160;到这里，已经获取了带缺口的背景图，那怎么样才可以获取不带缺口滑块的原图呢？</p>
+<p>&#160; &#160; &#160; &#160;网上提供的方法中，我筛选出了两种实测可行的方法，一种是通过改变CSS样式获得原图，另一种是将源码返回的乱序图还原，这里着重介绍第一种，另一种在日后的文章中将补充。</p>
+<p>&#160; &#160; &#160; &#160;在《python3网络爬虫开发实战》中，由于写书的时间距今有一段时间，所以极验的验证码也存在更新，截至到今天（2018-11-30）无法直接先获取无缺口的原图，在通过点击获得带缺口背景图了。观察一下验证码页面的源代码，可以发现：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/16325133-12f84f029c3b03e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>&#160; &#160; &#160; &#160;将该canvas标签的style删除之后，滑块和阴影果然不见了，这样我们只需要通过js操作css样式属性，便可以继续分析了。这里用到了execute_script()方法，基本上Selenium API没有提供的功能都可以通过它执行JavaScript的方式来实现。不得不说这个功能还是挺好用的，可以类比Splash执行Lua脚本。<br>&#160; &#160; &#160; &#160;执行js脚本之后(delete_style)获得了无缺口的原图，再调用之前的截图方法，就可以获取同大小的背景图了。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete_style</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    执行js脚本，获取无滑块图</span></span><br><span class="line"><span class="string">    :return None</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    js = <span class="string">'document.querySelectorAll("canvas")[2].style=""'</span></span><br><span class="line">    self.browser.execute_script(js)</span><br></pre></td></tr></table></figure><br><img src="https://upload-images.jianshu.io/upload_images/16325133-8965f91f7fc07e13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="不带缺口的背景图"><br><img src="https://upload-images.jianshu.io/upload_images/16325133-66d6dc1de3aafd4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="带缺口和阴影的背景图"></p>
+<h4 id="识别缺口"><a href="#识别缺口" class="headerlink" title="识别缺口"></a>识别缺口</h4><p>&#160; &#160; &#160; &#160;我们得到了两张图，接下来就要对比他们来获取缺口位置。<br>&#160; &#160; &#160; &#160;遍历图片的每个坐标点，获取两张图片的RGB数据，若差距在一定范围内，则认为两个像素相同，继续往下比对。若超过一定范围，则代表像素点不同，当且位置即为缺口位置。&#160; &#160; &#160; &#160;is_pixel_equal()中定义了一个阈值范围threshold，为60，原因是缺口图中不仅有缺口部分的像素不同，其中还设置了一个干扰阴影块，和缺口大小类似，所以我们需要将范围适当提高。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_pixel_equal</span><span class="params">(self, img1, img2, x, y)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    判断两个像素是否相同</span></span><br><span class="line"><span class="string">    :param img1: 不带缺口图片</span></span><br><span class="line"><span class="string">    :param img2: 带缺口图</span></span><br><span class="line"><span class="string">    :param x: 位置x</span></span><br><span class="line"><span class="string">    :param y: 位置y</span></span><br><span class="line"><span class="string">    :return: 像素是否相同</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="comment"># 取两个图片的像素点</span></span><br><span class="line">    pix1 = img1.load()[x, y]</span><br><span class="line">    pix2 = img2.load()[x, y]</span><br><span class="line">    threshold = <span class="number">60</span></span><br><span class="line">    <span class="keyword">if</span> abs(pix1[<span class="number">0</span>] - pix2[<span class="number">0</span>]) &lt; threshold \</span><br><span class="line">    <span class="keyword">and</span> abs(pix1[<span class="number">1</span>] - pix2[<span class="number">1</span>]) &lt; threshold \</span><br><span class="line">    <span class="keyword">and</span> abs(pix1[<span class="number">2</span>] - pix2[<span class="number">2</span>]) &lt; threshold:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure><br>&#160; &#160; &#160; &#160;get_gap()方法遍历两张图片的每个像素，再利用is_pixel_equal()方法判断两张图片同一位置的像素。get_gap()中，left为起始横坐标，即是从滑块的右边开始寻找缺口位置。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_gap</span><span class="params">(self, img1, img2)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    获取缺口偏移量</span></span><br><span class="line"><span class="string">    :param img1: 不带缺口图片</span></span><br><span class="line"><span class="string">    :param img2: 带缺口图</span></span><br><span class="line"><span class="string">    :return 缺口位置</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    left = <span class="number">60</span> </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(left, img1.size[<span class="number">0</span>]):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(img1.size[<span class="number">1</span>]):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.is_pixel_equal(img1, img2, i, j):</span><br><span class="line">                left = i</span><br><span class="line">                <span class="keyword">return</span> left</span><br><span class="line">    <span class="keyword">return</span> left</span><br></pre></td></tr></table></figure></p>
+<h4 id="模拟拖动"><a href="#模拟拖动" class="headerlink" title="模拟拖动"></a>模拟拖动</h4><p>&#160; &#160; &#160; &#160;上面我们获得了滑块的位置，现在只需要计算距离并且模拟拖动即可。<br>&#160; &#160; &#160; &#160;不难想到，将滑块匀速运动或者直接闪到缺口位置是肯定不行的，我们要尽量模拟人手拖动鼠标的情况。所以我在崔大给的方案的基础上做了一点改进。</p>
+<p>大致过程：<br>&#160; &#160; &#160; &#160;首先加速拖动滑块，当快接近缺口时，开始减速拖动，超过缺口一点距离后再往回拖拽对齐，由于人手可能不能对得非常整齐，所以我设置了1到2个像素的误差，并且再最后加入了3个像素距离的左右滑动来模拟释放鼠标时的抖动情况。</p>
+<p>效果如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/16325133-95a2c6c341ffd0f9.gif?imageMogr2/auto-orient/strip" alt></p>
+<p>利用中学时期的物理公式，即可构造轨迹移动算法。<br>&#160; &#160; &#160; &#160;<code>x = v0*t + 1/2*a*t^2</code><br>&#160; &#160; &#160; &#160;<code>v = v0 + a*t</code><br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_track</span><span class="params">(self, distance)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    根据偏移量获取移动轨迹</span></span><br><span class="line"><span class="string">    :param distance: 偏移量</span></span><br><span class="line"><span class="string">    :return: 移动轨迹</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="comment">#移动轨迹</span></span><br><span class="line">    track = []</span><br><span class="line">    <span class="comment">#当前位移</span></span><br><span class="line">    current = <span class="number">0</span></span><br><span class="line">    <span class="comment">#减速阈值</span></span><br><span class="line">    mid = distance * <span class="number">3</span> / <span class="number">5</span></span><br><span class="line">    <span class="comment">#计算间隔</span></span><br><span class="line">    t = <span class="number">0.2</span></span><br><span class="line">    <span class="comment">#初速度</span></span><br><span class="line">    v = <span class="number">0</span></span><br><span class="line">    <span class="comment">#滑超过过一段距离</span></span><br><span class="line">    distance += <span class="number">14</span></span><br><span class="line">    <span class="keyword">while</span> current &lt; distance:</span><br><span class="line">        <span class="keyword">if</span> current &lt; mid:</span><br><span class="line">            <span class="comment">#加速度为正</span></span><br><span class="line">            a = <span class="number">2</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment">#加速度为负</span></span><br><span class="line">            a = <span class="number">-1.5</span></span><br><span class="line">        <span class="comment">#初速度 v0</span></span><br><span class="line">        v0 = v</span><br><span class="line">        <span class="comment">#当前速度 v</span></span><br><span class="line">        v = v0 + a * t</span><br><span class="line">        <span class="comment">#移动距离 move--&gt;x</span></span><br><span class="line">        move = v0 * t + <span class="number">1</span> / <span class="number">2</span> * a * t * t</span><br><span class="line">        <span class="comment">#当前位移</span></span><br><span class="line">        current += move</span><br><span class="line">        <span class="comment">#加入轨迹</span></span><br><span class="line">        track.append(round(move))</span><br><span class="line">    <span class="keyword">return</span> track</span><br></pre></td></tr></table></figure><br>&#160; &#160; &#160; &#160;前3/5路程加速，后面减速，track返回的是一个列表，其中每个元素代表的是每次移动的距离。然后模拟释放鼠标时的人手抖动(shake_mouse)。<br>&#160; &#160; &#160; &#160;最后根据之前所得到的运动轨迹拖动滑块(move_to_gap)即可。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shake_mouse</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    模拟人手释放鼠标时的抖动</span></span><br><span class="line"><span class="string">    :return: None</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    ActionChains(self.browser).move_by_offset(xoffset=<span class="number">-3</span>, yoffset=<span class="number">0</span>).perform()</span><br><span class="line">    ActionChains(self.browser).move_by_offset(xoffset=<span class="number">2</span>, yoffset=<span class="number">0</span>).perform()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">move_to_gap</span><span class="params">(self, slider, tracks)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    拖动滑块到缺口处</span></span><br><span class="line"><span class="string">    :param slider: 滑块</span></span><br><span class="line"><span class="string">    :param tracks: 轨迹</span></span><br><span class="line"><span class="string">    :return</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    back_tracks = [<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-2</span>, <span class="number">-2</span>, <span class="number">-3</span>, <span class="number">-2</span>, <span class="number">-2</span>, <span class="number">-1</span>, <span class="number">-1</span>]</span><br><span class="line">    ActionChains(self.browser).click_and_hold(slider).perform()</span><br><span class="line">    <span class="comment">#正向</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> tracks:</span><br><span class="line">        ActionChains(self.browser).move_by_offset(xoffset=x, yoffset=<span class="number">0</span>).perform()</span><br><span class="line">    <span class="comment">#逆向</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> back_tracks:</span><br><span class="line">        ActionChains(self.browser).move_by_offset(xoffset=x, yoffset=<span class="number">0</span>).perform()</span><br><span class="line">    <span class="comment">#模拟抖动</span></span><br><span class="line">    self.shake_mouse()</span><br><span class="line">    time.sleep(<span class="number">0.5</span>)</span><br><span class="line">    ActionChains(self.browser).release().perform()</span><br></pre></td></tr></table></figure><br>其整个控制流程，如下：<br>&#160; &#160; &#160; &#160;执行主体流程，若验证失败， 则再次调用crack()进行识别，直至成功。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">crack</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="comment">#打开网页</span></span><br><span class="line">            self.open()</span><br><span class="line">            <span class="comment">#转换验证方式，点击认证按钮</span></span><br><span class="line">            s_button = self.change_to_slide()</span><br><span class="line">            s_button.click()</span><br><span class="line">            g_button = self.get_geetest_button()</span><br><span class="line">            g_button.click()</span><br><span class="line">            <span class="comment">#确认图片加载完成</span></span><br><span class="line">            self.wait_pic()</span><br><span class="line">            <span class="comment">#获取滑块</span></span><br><span class="line">            slider = self.get_slider()</span><br><span class="line">            <span class="comment">#获取带缺口的验证码图片</span></span><br><span class="line">            image1 = self.get_geetest_image(<span class="string">'captcha1.png'</span>)</span><br><span class="line">            self.delete_style()</span><br><span class="line">            image2 = self.get_geetest_image(<span class="string">'captcha2.png'</span>)</span><br><span class="line">            gap = self.get_gap(image1,image2)</span><br><span class="line">            print(<span class="string">'缺口位置'</span>,gap)</span><br><span class="line">            gap -= BORDER</span><br><span class="line">            track = self.get_track(gap)</span><br><span class="line">            self.move_to_gap(slider, track)</span><br><span class="line">            success =  self.wait.until(</span><br><span class="line">                EC.text_to_be_present_in_element((By.CLASS_NAME,<span class="string">'geetest_success_radar_tip_content'</span>),<span class="string">'验证成功'</span>)</span><br><span class="line">            )</span><br><span class="line">            print(success)</span><br><span class="line">            time.sleep(<span class="number">5</span>)</span><br><span class="line">            self.close()</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            print(<span class="string">'Failed-Retry'</span>)</span><br><span class="line">            self.crack()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    crack = CrackGeetest()</span><br><span class="line">    crack.crack()</span><br></pre></td></tr></table></figure><br>&#160; &#160; &#160; &#160;至此，极验滑动验证码识别——网页截图对比方法已经记录完毕。</p>
+<hr>
+<h2 id="关键字总结"><a href="#关键字总结" class="headerlink" title="关键字总结"></a>关键字总结</h2><ol>
+<li>webdriver():<br>&#160; &#160; &#160; &#160;support.expected_conditions as EC<br>&#160; &#160; &#160; &#160;support.wait.WebDriverWait<br>&#160; &#160; &#160; &#160;ActionChains<br>&#160; &#160; &#160; &#160;common.by.By</li>
+<li>BytesIO</li>
+<li>代码风格</li>
+<li>验证码分析思路</li>
+</ol>
+]]></content>
+      <categories>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+        <tag>验证码识别</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>反爬必修课之----(2)宫格验证码识别</title>
+    <url>/2019/05/25/captcha-weibo/</url>
+    <content><![CDATA[<blockquote>
+<p>&#160; &#160; &#160; &#160;验证码识别成为了对抗反爬虫的必修课之一，看了崔庆才著的《python3网络爬虫开发实战》后受益匪浅，本专题将着重学习记录不同的验证码识别方式：图像验证码、宫格验证码、极验滑动验证码、点触验证码。<br><a id="more"></a></p>
+<hr>
+<p>&#160; &#160; &#160; &#160;[2019.3.7更新]似乎宫格验证码被弃用了，换成了滑动验证码，那本文就当作日后遇到此类问题的一种思路吧~</p>
+<hr>
+</blockquote>
+<h2 id="微博宫格验证码识别"><a href="#微博宫格验证码识别" class="headerlink" title="微博宫格验证码识别"></a><center>微博宫格验证码识别</center></h2><p>先看看效果：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/16325133-28af7443ce1db823.gif?imageMogr2/auto-orient/strip" alt></p>
+<h3 id="识别思路"><a href="#识别思路" class="headerlink" title="识别思路"></a>识别思路</h3><p>&#160; &#160; &#160; &#160;验证码包含四个宫格，每个宫格有都有一条连线经过，并且起点到终点的各个线段有箭头标识，不难计算出其一共有4*3*2*1=24种组合方式。所以把每种验证码模板保存下来，再和待识别验证码比对，就可以判断其属于哪种路径。</p>
+<p>模板如下图，按照路径将其重命名。<br><img src="https://upload-images.jianshu.io/upload_images/16325133-3457ff9d513ab68f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="获取模板"><a href="#获取模板" class="headerlink" title="获取模板"></a>获取模板</h3><p>&#160; &#160; &#160; &#160;先初始化微博账号密码和图片的保存路径（账号可以通过淘宝购买）。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.common.exceptions <span class="keyword">import</span> TimeoutException</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> ActionChains</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support.ui <span class="keyword">import</span> WebDriverWait</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC</span><br><span class="line"><span class="keyword">from</span> os <span class="keyword">import</span> listdir</span><br><span class="line"></span><br><span class="line">USERNAME = <span class="string">'15688215917'</span>  <span class="comment">#微博账号</span></span><br><span class="line">PASSWORD = <span class="string">'xgpf0g4w8'</span>  <span class="comment">#微博密码</span></span><br><span class="line"></span><br><span class="line">TEMPLATES_FOLDER = <span class="string">'templates/'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CrackWeiboSlide</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.url = <span class="string">'https://passport.weibo.cn/signin/login?entry=mweibo&amp;r=https://m.weibo.cn/'</span></span><br><span class="line">        self.browser = webdriver.Chrome()</span><br><span class="line">        self.wait = WebDriverWait(self.browser, <span class="number">20</span>)</span><br><span class="line">        self.username = USERNAME</span><br><span class="line">        self.password = PASSWORD</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.browser.close()</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">open</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        打开网页输入用户名密码并点击</span></span><br><span class="line"><span class="string">        :return: None</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.browser.get(self.url)</span><br><span class="line">        username = self.wait.until(EC.presence_of_element_located((By.ID, <span class="string">'loginName'</span>)))</span><br><span class="line">        password = self.wait.until(EC.presence_of_element_located((By.ID, <span class="string">'loginPassword'</span>)))</span><br><span class="line">        submit = self.wait.until(EC.element_to_be_clickable((By.ID, <span class="string">'loginAction'</span>)))</span><br><span class="line">        username.send_keys(self.username)</span><br><span class="line">        password.send_keys(self.password)</span><br><span class="line">        submit.click()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_position</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        获取验证码位置</span></span><br><span class="line"><span class="string">        :return: 验证码位置元组</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            img = self.wait.until(EC.presence_of_element_located((By.CLASS_NAME, <span class="string">'patt-shadow'</span>)))</span><br><span class="line">        <span class="keyword">except</span> TimeoutException:</span><br><span class="line">            print(<span class="string">'未出现验证码'</span>)</span><br><span class="line">            self.open()</span><br><span class="line">        time.sleep(<span class="number">2</span>)</span><br><span class="line">        location = img.location</span><br><span class="line">        size = img.size</span><br><span class="line">        top, bottom, left, right = location[<span class="string">'y'</span>], location[<span class="string">'y'</span>] + size[<span class="string">'height'</span>], location[<span class="string">'x'</span>], location[<span class="string">'x'</span>] + size[</span><br><span class="line">            <span class="string">'width'</span>]</span><br><span class="line">        <span class="keyword">return</span> (top, bottom, left, right)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_image</span><span class="params">(self, name=<span class="string">'captcha.png'</span>)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        获取验证码图片</span></span><br><span class="line"><span class="string">        :return: 图片对象</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        top, bottom, left, right = self.get_position()</span><br><span class="line">        print(<span class="string">'验证码位置'</span>, top, bottom, left, right)</span><br><span class="line">        screenshot = self.get_screenshot()</span><br><span class="line">        captcha = screenshot.crop((left, top, right, bottom))</span><br><span class="line">        captcha.save(name)</span><br><span class="line">        <span class="keyword">return</span> captcha</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_all_captcha</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        获取批量验证码</span></span><br><span class="line"><span class="string">        :return: 图片对象</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            self.open()</span><br><span class="line">            self.get_image(str(count) + <span class="string">'.png'</span>)</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    crack = CrackWeiboSlide()</span><br><span class="line">    crack.get_all_captcha()</span><br></pre></td></tr></table></figure><br>&#160; &#160; &#160; &#160;保存所有截图并进行整理过后，调用get_image()方法，得到验证码图片对象，和模板进行一一比对，若匹配成功，则将模板文件名转换为列表，如： 4231.png - - &gt; [4,2,3,1]</p>
+<h3 id="比对方法"><a href="#比对方法" class="headerlink" title="比对方法"></a>比对方法</h3><p>&#160; &#160; &#160; &#160;获取截图，与每张模板进行比对(detect_image)，遍历像素(is_pixe_equal)，如果相同，计数加 1 ，最后计算相同像素点占总像素的比例(same_image)，若为0.99以上，代表匹配成功，则返回拖动宫格的顺序(detect_image)。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_pixel_equal</span><span class="params">(self, image1, image2, x, y)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    判断两个像素是否相同</span></span><br><span class="line"><span class="string">    :param image1: 图片1</span></span><br><span class="line"><span class="string">    :param image2: 图片2</span></span><br><span class="line"><span class="string">    :param x: 位置x</span></span><br><span class="line"><span class="string">    :param y: 位置y</span></span><br><span class="line"><span class="string">    :return: 像素是否相同</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment"># 取两个图片的像素点</span></span><br><span class="line">    pixel1 = image1.load()[x, y]</span><br><span class="line">    pixel2 = image2.load()[x, y]</span><br><span class="line">    threshold = <span class="number">30</span></span><br><span class="line">    <span class="keyword">if</span> abs(pixel1[<span class="number">0</span>] - pixel2[<span class="number">0</span>]) &lt; threshold <span class="keyword">and</span> abs(pixel1[<span class="number">1</span>] - pixel2[<span class="number">1</span>]) &lt; threshold <span class="keyword">and</span> abs(</span><br><span class="line">            pixel1[<span class="number">2</span>] - pixel2[<span class="number">2</span>]) &lt; threshold:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">same_image</span><span class="params">(self, image, template)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    识别相似验证码</span></span><br><span class="line"><span class="string">    :param image: 待识别验证码</span></span><br><span class="line"><span class="string">    :param template: 模板</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment"># 相似度阈值</span></span><br><span class="line">    threshold = <span class="number">0.99</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(image.width):</span><br><span class="line">        <span class="keyword">for</span> y <span class="keyword">in</span> range(image.height):</span><br><span class="line">            <span class="comment"># 判断像素是否相同</span></span><br><span class="line">            <span class="keyword">if</span> self.is_pixel_equal(image, template, x, y):</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">    result = float(count) / (image.width * image.height)</span><br><span class="line">    <span class="keyword">if</span> result &gt; threshold:</span><br><span class="line">        print(<span class="string">'成功匹配'</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">detect_image</span><span class="params">(self, image)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    匹配图片</span></span><br><span class="line"><span class="string">    :param image: 图片</span></span><br><span class="line"><span class="string">    :return: 拖动顺序</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">for</span> template_name <span class="keyword">in</span> listdir(TEMPLATES_FOLDER):</span><br><span class="line">        print(<span class="string">'正在匹配'</span>, template_name)</span><br><span class="line">        template = Image.open(TEMPLATES_FOLDER + template_name)</span><br><span class="line">        <span class="keyword">if</span> self.same_image(image, template):</span><br><span class="line">            <span class="comment"># 返回顺序</span></span><br><span class="line">            numbers = [int(number) <span class="keyword">for</span> number <span class="keyword">in</span> list(template_name.split(<span class="string">'.'</span>)[<span class="number">0</span>])]</span><br><span class="line">            print(<span class="string">'拖动顺序'</span>, numbers)</span><br><span class="line">            <span class="keyword">return</span> numbers</span><br></pre></td></tr></table></figure></p>
+<h3 id="获取拖动顺序，据此拖动鼠标连接宫格"><a href="#获取拖动顺序，据此拖动鼠标连接宫格" class="headerlink" title="获取拖动顺序，据此拖动鼠标连接宫格"></a>获取拖动顺序，据此拖动鼠标连接宫格</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(self, numbers)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        根据顺序拖动</span></span><br><span class="line"><span class="string">        :param numbers: 拖动顺序</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># 获得四个按点</span></span><br><span class="line">        circles = self.browser.find_elements_by_css_selector(<span class="string">'.patt-wrap .patt-circ'</span>)</span><br><span class="line">        dx = dy = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> index <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">            circle = circles[numbers[index] - <span class="number">1</span>]</span><br><span class="line">            <span class="comment"># 如果是第一次循环</span></span><br><span class="line">            <span class="keyword">if</span> index == <span class="number">0</span>:</span><br><span class="line">                <span class="comment"># 点击第一个按点</span></span><br><span class="line">                ActionChains(self.browser) \</span><br><span class="line">                    .move_to_element_with_offset(circle, circle.size[<span class="string">'width'</span>] / <span class="number">2</span>, circle.size[<span class="string">'height'</span>] / <span class="number">2</span>) \</span><br><span class="line">                    .click_and_hold().perform()</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 小幅移动次数</span></span><br><span class="line">                times = <span class="number">30</span></span><br><span class="line">                <span class="comment"># 拖动</span></span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> range(times):</span><br><span class="line">                    ActionChains(self.browser).move_by_offset(dx / times, dy / times).perform()</span><br><span class="line">                    time.sleep(<span class="number">1</span> / times)</span><br><span class="line">            <span class="comment"># 如果是最后一次循环</span></span><br><span class="line">            <span class="keyword">if</span> index == <span class="number">3</span>:</span><br><span class="line">                <span class="comment"># 松开鼠标</span></span><br><span class="line">                ActionChains(self.browser).release().perform()</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 计算下一次偏移</span></span><br><span class="line">                dx = circles[numbers[index + <span class="number">1</span>] - <span class="number">1</span>].location[<span class="string">'x'</span>] - circle.location[<span class="string">'x'</span>]</span><br><span class="line">                dy = circles[numbers[index + <span class="number">1</span>] - <span class="number">1</span>].location[<span class="string">'y'</span>] - circle.location[<span class="string">'y'</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">crack</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        破解入口</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.open()</span><br><span class="line">        <span class="comment"># 获取验证码图片</span></span><br><span class="line">        image = self.get_image(<span class="string">'captcha.png'</span>)</span><br><span class="line">        numbers = self.detect_image(image)</span><br><span class="line">        self.move(numbers)</span><br><span class="line">        time.sleep(<span class="number">10</span>)</span><br><span class="line">        print(<span class="string">'识别结束'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    crack = CrackWeiboSlide()</span><br><span class="line">    <span class="comment"># crack.get_all_captcha()</span></span><br><span class="line">    crack.crack()</span><br></pre></td></tr></table></figure>
+<p>输出结果如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/16325133-da9563589657c546.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<hr>
+<h2 id="关键字总结"><a href="#关键字总结" class="headerlink" title="关键字总结"></a>关键字总结</h2><ol>
+<li>模板匹配</li>
+<li>os.listdir</li>
+<li>模拟鼠标（ActionChains类）</li>
+</ol>
+]]></content>
+      <categories>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+        <tag>验证码识别</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>反爬必修课之----(1)图像验证码识别</title>
+    <url>/2019/05/16/captcha-ocr/</url>
+    <content><![CDATA[<blockquote>
+<p>&#160; &#160; &#160; &#160;验证码识别成为了对抗反爬虫的必修课之一，看了崔庆才著的《python3网络爬虫开发实战》后受益匪浅，本专题将着重学习记录不同的验证码识别方式：图像验证码、宫格验证码、极验滑动验证码、点触验证码。<br><a id="more"></a></p>
+<hr>
+<p>&#160; &#160; &#160; &#160;[3.20更新]如今的图像验证码日益复杂，混淆的参数太多。故OCR技术基本上已经无法满足现在的验证码识别需求，但是其在爬虫中仍然有用武之地。例如某些网站的价格信息是图片的形式，就可以利用tesserocr库方便的将其转化为文本。<br>&#160; &#160; &#160; &#160;[2019.12.30注]开通博客以后，逐一把简书上的内容迁移到本博客中。</p>
+<hr>
+</blockquote>
+<h2 id="图像验证码识别"><a href="#图像验证码识别" class="headerlink" title="图像验证码识别"></a><center>图像验证码识别</center></h2><p><img src="https://upload-images.jianshu.io/upload_images/16325133-7c5c5b1c3077dcc8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>&#160; &#160; &#160; &#160;图形验证码，一般由字母或数字组成。对于某些简单图形，利用OCR（Optical Character Recognition光学字符识别）技术就可以比较放方便的识别。OCR通过扫描字符，将其形状翻译成电子文本。所需要用到的是tesserocr。其是Python的一个OCR库，但其实是对tesseract做的一层Python APIde 封装，所以他的核心是tesseract。因此，在安装tesserocr之前，我们需要先安装tesseract。</p>
+<h3 id="识别测试"><a href="#识别测试" class="headerlink" title="识别测试"></a>识别测试</h3><p><img src="https://upload-images.jianshu.io/upload_images/16325133-0067fb9c0c25ca2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="code.jpg"><br>代码如下：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tesserocr</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">image = Image.open(<span class="string">'code.jpg'</span>)</span><br><span class="line">result = tesserocr.image_to_text(image)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure><br>输出 : <code>M 8192‘、</code></p>
+<p>&#160; &#160; &#160; &#160;显然和图片内容不符，主要是因为多余的线条和点干扰了识别。所以还需对这种情况加以处理：转灰度、二值化等。</p>
+<blockquote>
+<p>&#160; &#160; &#160; &#160;二值图像(Binary Image)，按名字来理解只有两个值，0和1，0代表黑，1代表白，或者说0表示背景，而1表示前景。*</p>
+<p>&#160; &#160; &#160; &#160;灰度图只包含一个通道的信息，而彩色图通常包含三个通道的信息，这类图像通常显示为从最暗黑色到最亮的白色的灰度，与黑白图像不同，灰度图像在黑色与白色之间还有许多级的颜色深度。*</p>
+</blockquote>
+<p>代码如下：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tesserocr</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">image = Image.open(<span class="string">'code.jpg'</span>)</span><br><span class="line">image = image.convert(<span class="string">'L'</span>)  <span class="comment">#转为灰度图像</span></span><br><span class="line">image = image.convert(<span class="string">'1'</span>）<span class="comment">#二值化</span></span><br><span class="line">result = tesserocr.image_to_text(image)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure><br>输出：<code>M8k2</code>,已经和符合图片上的信息了。</p>
+<p>但若对于干扰较大的图片，如下：<br><img src="https://upload-images.jianshu.io/upload_images/16325133-546fe58078eb62cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="code2.jpg"><br>&#160; &#160; &#160; &#160;同样的操作，并未得到输出，我们可以指定二值化的阈值。（上述方法采用的是默认阈值127）</p>
+<p>代码如下:<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tesserocr</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">image = Image.open(<span class="string">'code2.jpg'</span>)</span><br><span class="line">image = image.convert(<span class="string">'L'</span>)  <span class="comment">#首先转化为灰度图像</span></span><br><span class="line">threshold = <span class="number">100</span>   <span class="comment">#二值化阈值</span></span><br><span class="line">table = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">256</span>):</span><br><span class="line">    <span class="keyword">if</span> i &lt; threshold:</span><br><span class="line">        table.append(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        table.append(<span class="number">1</span>)</span><br><span class="line">image = image.point(table,<span class="string">'1'</span>)</span><br><span class="line">image.show()</span><br><span class="line">result = tesserocr.image_to_text(image)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure><br>输出结果为：<code>1717</code><br>得到的样式如下：<br><img src="https://upload-images.jianshu.io/upload_images/16325133-553f4a45ca939eda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>&#160; &#160; &#160; &#160;当阈值设置为100的时候，可以得到正确输出，而设置其他相差过大的阈值时（如80、180无输出，127时输出结果为：<code>，7</code>），可见阈值的选择也是很重要的。</p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li><p>python的tesserocr库可以通过扫描图片上的字符转化为文字输出，但有一定的局限性。</p>
+</li>
+<li><p>通过转化为灰度图像再进行适当的二值化处理，可以提高识别正确率。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+        <tag>验证码识别</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
-    <url>/2019/12/27/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+    <url>/2018/12/27/hello-world/</url>
+    <content><![CDATA[<!-- <img src="https://github.com/maoqitian/MaoMdPhoto/raw/master/Jenkins/Jenkins.jpg" width=50% /> -->
+<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <a id="more"></a>
+<h2 id="个人test"><a href="#个人test" class="headerlink" title="个人test"></a>个人test</h2><p>&#160; &#160; &#160; &#160;空格</p>
+<center>居中</center>
+
+<center>
+<img src="https://s2.ax1x.com/2020/01/08/l2CuxH.png" width="20%">
+</center>
+
+<p align="right">右对齐</p>
+
+<blockquote class="blockquote-center"><p>引用块</p>
+</blockquote>
+<h2 id><a href="#" class="headerlink" title></a><blockquote><p>引用网址. </p>
+<footer><strong>DevDocs</strong><cite><a href="https://twitter.com" target="_blank" rel="noopener">twitter.com</a></cite></footer></blockquote></h2><blockquote><p>Every interaction is both precious and an opportunity to delight.</p>
+<footer><strong>Seth Godin</strong><cite><a href="http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html" target="_blank" rel="noopener">引用网址</a></cite></footer></blockquote>
+<div class="note default">
+            <p>Content  阿斯蒂芬  </p>
+          </div>
+<div class="note primary">
+            <p>Content  阿斯蒂芬  </p>
+          </div>
+<div class="note success">
+            <p>Content  阿斯蒂芬  </p>
+          </div>
+<div class="note info">
+            <p>Content  阿斯蒂芬  </p>
+          </div>
+<div class="note warning">
+            <p>Content  阿斯蒂芬  </p>
+          </div>
+<div class="note danger">
+            <p>Content  阿斯蒂芬  </p>
+          </div>
+
+{% note danger %}原始代码{% endnote %}
 
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 ]]></content>
   </entry>
